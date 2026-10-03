@@ -59,7 +59,7 @@ xcodebuild -project Dopagaki.xcodeproj -scheme Dopagaki \
 
 ## 無料Personal TeamでiPhoneに入れる
 
-この確認版はScreen Timeとその3拡張、App Group権限を含みません。ToDo・計測・達成演出・音・触覚は利用できます。通常版と別のBundle Identifierを使用し、記録は自動移行しません。
+標準の確認版はScreen Timeとその3拡張、ウィジェット、App Group権限を含みません。ToDo・計測・達成演出・音・触覚は利用できます。通常版と別のBundle Identifierを使用し、記録は自動移行しません。
 
 ### 1. Apple AccountとiPhoneを準備
 
@@ -123,13 +123,30 @@ xcrun devicectl device info details --device YOUR_IPHONE_UDID
 
 無料Personal Teamの署名は通常約7日で期限切れになります。同じApple Account・Bundle Identifierで新しい開発用署名を使ってビルドし、上書きインストールします。期限切れ前でも後でも更新できます。上書き更新では通常アプリの記録は保持されますが、**アプリを削除するとデータを失うため、削除してから入れ直す操作は避けてください。**
 
+## ウィジェット付きの無料確認版
+
+無料確認版にウィジェットとApp Groupを追加する場合は、生成時にオプションを指定します。
+
+```sh
+python3 scripts/prepare_personal_device.py \
+  --output /tmp/dopagaki-personal-widget-device \
+  --team YOUR_TEAM_ID --with-widgets \
+  --app-group group.dev.dopagaki.todo.personal
+```
+
+以降のビルドではプロジェクトのパスを `/tmp/dopagaki-personal-widget-device/Dopagaki.xcodeproj` に置き換えます。XcodeのApple Account認証が有効で、本体とProgressWidgetに同じApp Groupを含むプロビジョニングが必要です。グループ名が使用できない場合は、自分のチームで使える識別子を `--app-group` に指定してください。[Appleの対応表](https://developer.apple.com/help/account/reference/supported-capabilities-ios)ではApp Groupsは無料アカウントでも利用可能ですが、実際の署名可否はXcodeで確認してください。今回のPersonal Teamでは、本体とウィジェットのApp Group付き署名に成功しています。
+
+既存の無料確認版と同じアプリ識別子・記録の保存先を使います。タスクや写真を移動せず、件数とレベルだけをApp Groupへ共有します。Screen Timeの制限はこの版にも含みません。
+
+インストール後に一度アプリを開き、[ウィジェットの追加手順](WIDGETS.md)へ進んでください。
+
 ## Screen Timeを含む通常版
 
 無料Personal TeamではFamily Controlsを署名できません。Apple Developer Programの開発チームを使用します。
 
-1. `Dopagaki.xcodeproj` の4ターゲット（Dopagaki、ActivityMonitor、ShieldConfiguration、ShieldAction）に同じ開発チームを設定します。
+1. `Dopagaki.xcodeproj` の5ターゲット（Dopagaki、ActivityMonitor、ShieldConfiguration、ShieldAction、ProgressWidget）に同じ開発チームを設定します。
 2. Bundle Identifierを自分のチームで使える値に設定します。各拡張は本体の識別子に拡張名を付けた形にします。
-3. 全ターゲットでFamily Controlsと同一のApp Groupを有効にします。Build Settingsの `DOPA_APP_GROUP` も一致させます。
+3. 全5ターゲットで同一のApp Groupを有効にします。Family Controlsは本体とScreen Timeの3拡張に設定し、ProgressWidgetには追加しません。Build Settingsの `DOPA_APP_GROUP` も一致させます。
 4. 実機を選びRunします。手元の署名設定はそのままGitにコミットせず、差分を確認してください。
 
 テストは「Screen Timeを許可 → 対象アプリを選択 → マスト未完了で制限 → 全完了で解除」の順に行います。15分の一時解除、翌日の再制限、OS側で許可を取り消した場合も確認します。時刻コールバックはOSの状態に依存し、厳密な定刻実行は保証しません。

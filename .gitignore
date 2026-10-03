@@ -38,5 +38,6 @@ testflight-preparation.json
 # Runtime data and device exports
 state-v1.json
 screen-time-v1.json
+widget-progress-v1.json
 *.xcappdata/
 Photos/

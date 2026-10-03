@@ -41,6 +41,7 @@ def generate():
         ("Dopagaki", "dev.dopagaki.todo", "com.apple.product-type.application", "app", sorted(str(p.relative_to(ROOT)) for p in (ROOT / "App").rglob("*.swift")) + shared, "App/Info.plist", None),
         ("ActivityMonitor", "dev.dopagaki.todo.ActivityMonitor", "com.apple.product-type.app-extension", "appex", ["Extensions/ActivityMonitor/ActivityMonitor.swift"] + shared, "Extensions/ActivityMonitor/Info.plist", "com.apple.deviceactivity.monitor-extension"),
         ("ShieldConfiguration", "dev.dopagaki.todo.ShieldConfiguration", "com.apple.product-type.app-extension", "appex", ["Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift"], "Extensions/ShieldConfiguration/Info.plist", "com.apple.ManagedSettingsUI.shield-configuration-service"),
+        ("ProgressWidget", "dev.dopagaki.todo.ProgressWidget", "com.apple.product-type.app-extension", "appex", ["Extensions/ProgressWidget/ProgressWidget.swift", "Shared/WidgetSnapshotRepository.swift"], "Extensions/ProgressWidget/Info.plist", "com.apple.widgetkit-extension"),
         ("ShieldAction", "dev.dopagaki.todo.ShieldAction", "com.apple.product-type.app-extension", "appex", ["Extensions/ShieldAction/ShieldActionExtension.swift"], "Extensions/ShieldAction/Info.plist", "com.apple.ManagedSettings.shield-action-service"),
     ]
     files = []
@@ -63,7 +64,7 @@ def generate():
         builds = [add(f"build.{name}.{p}", "PBXBuildFile", fileRef=ident("file." + p)) for p in sources]
         source_phase = add("sources." + name, "PBXSourcesBuildPhase", buildActionMask=2147483647, files=builds, runOnlyForDeploymentPostprocessing=0)
         package_deps, framework_builds = [], []
-        if name in ["Dopagaki", "ActivityMonitor"]:
+        if name in ["Dopagaki", "ActivityMonitor", "ProgressWidget"]:
             dep = add("dependency.core." + name, "XCSwiftPackageProductDependency", package=package, productName="DopagakiCore")
             package_deps.append(dep)
             framework_builds.append(add("build.core." + name, "PBXBuildFile", productRef=dep))
@@ -74,17 +75,23 @@ def generate():
             resource_files.append(add("build.Dopagaki." + privacy, "PBXBuildFile", fileRef=ident("file." + privacy)))
         resources = add("resources." + name, "PBXResourcesBuildPhase", buildActionMask=2147483647, files=resource_files, runOnlyForDeploymentPostprocessing=0)
         entitlements_path = "App/Dopagaki.entitlements" if name == "Dopagaki" else f"Extensions/{name}/{name}.entitlements"
-        plist(entitlements_path, {"com.apple.developer.family-controls": True, "com.apple.security.application-groups": ["$(DOPA_APP_GROUP)"]})
+        entitlements = {"com.apple.security.application-groups": ["$(DOPA_APP_GROUP)"]}
+        if name != "ProgressWidget":
+            entitlements["com.apple.developer.family-controls"] = True
+        plist(entitlements_path, entitlements)
         info = {"CFBundleDevelopmentRegion": "ja", "CFBundleDisplayName": "ドパギキ" if name == "Dopagaki" else name,
                 "CFBundleExecutable": "$(EXECUTABLE_NAME)", "CFBundleIdentifier": "$(PRODUCT_BUNDLE_IDENTIFIER)",
                 "CFBundleInfoDictionaryVersion": "6.0", "CFBundleName": "$(PRODUCT_NAME)",
-                "CFBundlePackageType": "APPL" if name == "Dopagaki" else "XPC!", "CFBundleShortVersionString": "1.0", "CFBundleVersion": "1", "DopaAppGroup": "$(DOPA_APP_GROUP)"}
+                "CFBundlePackageType": "APPL" if name == "Dopagaki" else "XPC!", "CFBundleShortVersionString": "1.0", "CFBundleVersion": "1", "DopaAppGroup": "$(DOPA_APP_GROUP)", "DopaURLScheme": "$(DOPA_URL_SCHEME)"}
         if extension_point:
             principal = "ActivityMonitor" if name == "ActivityMonitor" else name + "Extension"
-            info["NSExtension"] = {"NSExtensionPointIdentifier": extension_point, "NSExtensionPrincipalClass": f"$(PRODUCT_MODULE_NAME).{principal}"}
+            info["NSExtension"] = {"NSExtensionPointIdentifier": extension_point}
+            if name != "ProgressWidget":
+                info["NSExtension"]["NSExtensionPrincipalClass"] = f"$(PRODUCT_MODULE_NAME).{principal}"
         else:
             info.update({"LSRequiresIPhoneOS": True, "UILaunchScreen": {}, "UIUserInterfaceStyle": "Dark",
                          "ITSAppUsesNonExemptEncryption": False,
+                         "CFBundleURLTypes": [{"CFBundleURLName": "dev.dopagaki.todo.navigation", "CFBundleURLSchemes": ["$(DOPA_URL_SCHEME)"]}],
                          "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
                          "NSMicrophoneUsageDescription": "取り組んだ内容を、話してメモに残すためにマイクを使用します。",
                          "NSSpeechRecognitionUsageDescription": "話した内容を文字に変換します。端末内認識が使えない場合はAppleの音声認識サービスを使用します。"})
@@ -92,7 +99,7 @@ def generate():
         settings = {"PRODUCT_NAME": "$(TARGET_NAME)", "PRODUCT_BUNDLE_IDENTIFIER": bundle,
                     "INFOPLIST_FILE": info_path, "GENERATE_INFOPLIST_FILE": "NO",
                     "CODE_SIGN_STYLE": "Automatic", "DEVELOPMENT_TEAM": "", "CODE_SIGN_ENTITLEMENTS": entitlements_path,
-                    "DOPA_APP_GROUP": "group.dev.dopagaki.todo", "SWIFT_VERSION": "5.0", "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+                    "DOPA_APP_GROUP": "group.dev.dopagaki.todo", "DOPA_URL_SCHEME": "dopagaki", "SWIFT_VERSION": "5.0", "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
                     "TARGETED_DEVICE_FAMILY": "1", "SDKROOT": "iphoneos", "SUPPORTED_PLATFORMS": "iphoneos iphonesimulator",
                     "ENABLE_PREVIEWS": "YES", "SWIFT_EMIT_LOC_STRINGS": "YES",
                     "LD_RUNPATH_SEARCH_PATHS": "$(inherited) @executable_path/Frameworks" if name == "Dopagaki" else "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"}
@@ -116,7 +123,7 @@ def generate():
     product_group = add("products", "PBXGroup", children=products, name="Products", sourceTree="<group>")
     main_group = add("main", "PBXGroup", children=files + [product_group], sourceTree="<group>")
     config = config_list("project.config", {"CLANG_ENABLE_MODULES": "YES", "CLANG_ENABLE_OBJC_ARC": "YES", "ENABLE_TESTABILITY": "YES", "SDKROOT": "iphoneos", "IPHONEOS_DEPLOYMENT_TARGET": "17.0", "SWIFT_VERSION": "5.0", "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"})
-    add("project", "PBXProject", attributes={"BuildIndependentTargetsInParallel": "YES", "LastUpgradeCheck": "1600", "TargetAttributes": {t: {"CreatedOnToolsVersion": "16.0", "SystemCapabilities": {"com.apple.FamilyControls": {"enabled": 1}, "com.apple.ApplicationGroups.iOS": {"enabled": 1}}} for t in targets}}, buildConfigurationList=config, compatibilityVersion="Xcode 14.0", developmentRegion="ja", knownRegions=["ja", "en", "Base"], mainGroup=main_group, productRefGroup=product_group, projectDirPath="", projectRoot="", targets=targets, packageReferences=[package])
+    add("project", "PBXProject", attributes={"BuildIndependentTargetsInParallel": "YES", "LastUpgradeCheck": "1600", "TargetAttributes": {t: {"CreatedOnToolsVersion": "16.0", "SystemCapabilities": {"com.apple.FamilyControls": {"enabled": 0 if t == ident("target.ProgressWidget") else 1}, "com.apple.ApplicationGroups.iOS": {"enabled": 1}}} for t in targets}}, buildConfigurationList=config, compatibilityVersion="Xcode 14.0", developmentRegion="ja", knownRegions=["ja", "en", "Base"], mainGroup=main_group, productRefGroup=product_group, projectDirPath="", projectRoot="", targets=targets, packageReferences=[package])
     project_dir = ROOT / "Dopagaki.xcodeproj"
     project_dir.mkdir(exist_ok=True)
     # JSON-form OpenStep property lists are accepted by plutil; convert to ASCII below.

@@ -12,9 +12,10 @@
 | UI | SwiftUI / Liquid Glass | タスク・タイマー・実績画面、iOS 26以降の操作部分 |
 | 立体演出 | SceneKit | 星とメダルの表示・アニメーション |
 | 音声・写真 | Speech / PhotosUI | 音声からのメモ入力、選択した写真の添付 |
+| ウィジェット | WidgetKit | ホーム・ロック画面の残り件数、iPhoneウィジェットのMac連係 |
 | 通知 | UserNotifications | 期限・声かけ・タイマー終了のローカル通知 |
 | データ保存 | Codable / JSON / FileManager | 端末内のタスク・記録・写真の保存 |
-| パッケージ・テスト | Swift Package Manager / XCTest | ローカルの中核ロジックと25項目のテスト |
+| パッケージ・テスト | Swift Package Manager / XCTest | ローカルの中核ロジックと33項目のテスト |
 | 開発用スクリプト | Python 3 | Xcodeプロジェクト・配布準備、構成検査、効果音の合成 |
 
 アプリ本体はSwiftで実装しています。Pythonは開発作業の補助に使い、iPhone上でPythonを実行する構成ではありません。
@@ -35,6 +36,14 @@ Core Hapticsで23種類の触覚を使い分け、星の着地では音と振動
 
 通常版はApp Group、無料Personal Team確認版はアプリ専用領域を使用します。Bundle Identifierと保存領域が異なるため、両者のデータは自動移行しません。利用者向けの説明は[データの取り扱い](../Distribution/Privacy.md)を参照してください。
 
+### ウィジェットとMac連係
+
+`ProgressWidget`拡張が小・中・円形・長方形・インラインの5形式を提供します。`WidgetProgressSnapshot`は集計タイムゾーンで8日分の件数とレベルを計算します。タスク名・メモ・写真は含めません。`WidgetSnapshotRepository`がApp Groupへ集計をアトミック保存し、値が変わった場合のみ本体がWidgetKitへ更新を要求します。拡張はこの集計を読むだけで、タスク完了や報酬の保存は本体で行います。
+
+ウィジェット用の共有ファイルが読み取れない場合や存在しない場合は、空のタスクを達成扱いせず「アプリを開いて更新」を表示します。8日分の有効期限が切れた場合も同じ表示にします。表示には`privacySensitive`を指定し、タップは`dopagaki://today`（無料版は`dopagaki-personal://today`）で本体の「今日」に戻します。反映時刻はOSの更新予算に依存します。[Appleの更新指針](https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date)
+
+MacはiPhoneウィジェットの連係表示とiPhoneミラーリングによる通知受信を利用します。ネイティブmacOSアプリ・独自の同期・Macのアプリ制限は含みません。追加手順・必要環境は[ウィジェットとMac](WIDGETS.md)を参照してください。
+
 ## 開発とテスト
 
 ```sh
@@ -51,7 +60,7 @@ python3 scripts/check_project.py
 python3 scripts/check_repository.py
 ```
 
-25項目の中核・保存テスト、シミュレーター向けビルド、Personal Team版のiPhoneへのインストール・起動を確認しています。Screen Timeの実機制限・解除とTestFlightへの配布は未検証・未実施です。触覚の体感やLiquid Glassの全画面の見え方は、対応実機での確認を続けます。
+33項目の中核・保存テスト、通常版・ウィジェット付きPersonal Team版のシミュレーター向けビルドを確認しています。シミュレーターでは小・中ウィジェットの実データ表示、完了後の更新、本体への遷移を確認しました。ウィジェット付きPersonal Team版は実機署名・iPhoneへの上書きインストール・起動まで成功しています。ロック画面の実表示とMac連係は実機での追加検証が必要です。Screen Timeの実機制限・解除とTestFlightへの配布は未検証・未実施です。触覚の体感やLiquid Glassの全画面の見え方は、対応実機での確認を続けます。
 
 | ディレクトリ | 役割 |
 | --- | --- |
@@ -60,7 +69,7 @@ python3 scripts/check_repository.py
 | `App/Services` | 触覚、音声認識、通知、Screen Time |
 | `Core` / `CoreTests` | タスク・実行分・報酬・集中時間のロジックとテスト |
 | `Shared` / `PersistenceTests` | 保存・拡張との共有とテスト |
-| `Extensions` | 日次監視、制限画面、制限画面の操作 |
+| `Extensions` | 日次監視、制限画面、制限画面の操作、進捗ウィジェット |
 | `scripts` | ビルド準備、構成検査、効果音生成 |
 | `Design` | 生成素材の記録とシミュレーター検証素材 |
 | `Distribution` | TestFlight準備手順・審査メモ・プライバシー草案 |

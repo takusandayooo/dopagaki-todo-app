@@ -45,7 +45,6 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         guard revision == currentRevision, settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else { return }
         let now = Date()
         if state.settings.remindersEnabled {
-            let phrases = ["今日の一歩、いま始めよう。", "ちょっとだけでも、草が育つよ。", "今日のマスト、ひとつやってみる？"]
             let dailyLimit = min(5, max(0, state.settings.reminderDailyLimit))
             var requests: [UNNotificationRequest] = []
             let calendar = state.calendar
@@ -54,6 +53,7 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
             for dayOffset in 0..<7 {
                 guard let day = calendar.date(byAdding: .day, value: dayOffset, to: now) else { continue }
                 snapshot.ensureOccurrences(on: day)
+                let progress = WidgetDayProgress(state: snapshot, on: day)
                 let pendingTasks = snapshot.occurrences(on: day).filter { !$0.isCompleted }
                 var dayRequests: [UNNotificationRequest] = []
                 for occurrence in pendingTasks {
@@ -65,15 +65,14 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
                         triggerDate = calendar.date(bySettingHour: time.hour ?? 19, minute: time.minute ?? 0, second: 0, of: day) ?? day
                     }
                     if triggerDate > now, calendar.isDate(triggerDate, inSameDayAs: day) {
-                        dayRequests.append(request(id: "dopa.task.\(task.id).\(snapshot.dayKey(for: day))", title: occurrence.title, body: "取り組む時間です。今日の一歩を記録しよう。", date: triggerDate, taskID: task.id, sound: state.settings.soundEnabled, calendar: calendar))
+                        dayRequests.append(request(id: "dopa.task.\(task.id).\(snapshot.dayKey(for: day))", title: occurrence.title, body: "取り組む時間です。\(progress.reminderText)", date: triggerDate, taskID: task.id, sound: state.settings.soundEnabled, calendar: calendar))
                     }
                 }
                 if let next = pendingTasks.first {
                     for offset in 0..<dailyLimit {
                         let hour = min(23, max(0, state.settings.reminderHour) + offset)
                         guard let date = calendar.date(bySettingHour: hour, minute: (offset * 17) % 60, second: 0, of: day), date > now else { continue }
-                        let phrase = phrases[(dayOffset + offset) % phrases.count]
-                        dayRequests.append(request(id: "dopa.nudge.\(snapshot.dayKey(for: day)).\(offset)", title: "ドパギキ", body: phrase, date: date, taskID: next.taskID, sound: state.settings.soundEnabled, calendar: calendar))
+                        dayRequests.append(request(id: "dopa.nudge.\(snapshot.dayKey(for: day)).\(offset)", title: "ドパギキ", body: progress.reminderText, date: date, taskID: next.taskID, sound: state.settings.soundEnabled, calendar: calendar))
                     }
                 }
                 requests.append(contentsOf: dayRequests.prefix(dailyLimit))

@@ -41,6 +41,35 @@
 		EFABE1E089555F54889C0B64 /* App/Services/HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE32115A299DF0E7C10DAD /* App/Services/HapticsService.swift */; };
 		F292355DBD00988D8094C72C /* App/Services/NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFEF31D924ECB957578EA9 /* App/Services/NotificationService.swift */; };
 		FF64A8727111A72A14826ECD /* App/Celebrations/RewardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3282BF587E9EECBDF7E8A /* App/Celebrations/RewardScene.swift */; };
+		1B031D6DCA1890E4A22B520F = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
+		};
+		5A22AEB3293896E5B75DBF24 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
+		};
+		72F10D67ECD6D09D92E692E7 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "522BB3A106417BD0A63CA5D4";
+		};
+		936514B556D02A60585559D4 = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "EAA02C0DECEDCE4FA6170ABC";
+		};
+		A81B1EC6A6D0EAE3445171AD = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "6C1A2B1AAD8130ED4B01BDE9";
+			"settings" = {
+				"ATTRIBUTES" = (
+					"RemoveHeadersOnCopy",
+				);
+			};
+		};
+		E4E53FB49892551DBE87FEC8 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
+		};
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +94,13 @@
 			remoteGlobalIDString = AC03FBC5CB75AFF4847C7FA9;
 			remoteInfo = ShieldConfiguration;
 		};
+		FF5A9EDD4D4E48C4717A3917 = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"remoteGlobalIDString" = "F18CD2AD7099191462D7836F";
+			"remoteInfo" = "ProgressWidget";
+			"proxyType" = "1";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +110,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A81B1EC6A6D0EAE3445171AD,
 				55487539CA84F57E121B9D18 /* ActivityMonitor.appex in Embed Foundation Extensions */,
 				1A0C98ED52766F0A3A0D997C /* ShieldConfiguration.appex in Embed Foundation Extensions */,
 				E6F9E01AFEF8D26C52CE03D9 /* ShieldAction.appex in Embed Foundation Extensions */,
@@ -117,6 +154,25 @@
 		F04B8EFFC251CF9994027D3E /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift; sourceTree = SOURCE_ROOT; };
 		F2E73F7C90D1030279555F26 /* Extensions/ShieldAction/ShieldActionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions/ShieldAction/ShieldActionExtension.swift; sourceTree = SOURCE_ROOT; };
 		F37FD9787D2F45B5183BF8E2 /* ShieldAction.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShieldAction.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		522BB3A106417BD0A63CA5D4 = {
+			"path" = "Extensions/ProgressWidget/ProgressWidget.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		6C1A2B1AAD8130ED4B01BDE9 = {
+			"path" = "ProgressWidget.appex";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.app-extension";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		9D9CC6EEB16D5A34FB734DCA = {
+			"path" = "Shared/WidgetSnapshotRepository.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +206,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64812D7C834F0AF5E51EF23E = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"936514B556D02A60585559D4",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B28B7AF69320201D1CF206EB = {
 			isa = PBXGroup;
 			children = (
+				522BB3A106417BD0A63CA5D4,
+				9D9CC6EEB16D5A34FB734DCA,
 				36C63419A9B1F1622A9C6084,
 				99BA00000000000000000002 /* PrivacyInfo.xcprivacy */,
 				3CBC6836E0B24069A9C6F62D,
@@ -192,6 +258,7 @@
 		FBDC4F23F93125BBEEAE800C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				6C1A2B1AAD8130ED4B01BDE9,
 				8D3909FFF910DAF340D0CDD6 /* Dopagaki.app */,
 				97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */,
 				EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */,
@@ -254,6 +321,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FA090FCEB03E94EC40183197,
 				1D47B61022795632EDEB99BA /* PBXTargetDependency */,
 				0733B52D09279687F5B5ED2E /* PBXTargetDependency */,
 				3407C2CA9D35124037F9A59D /* PBXTargetDependency */,
@@ -285,6 +353,26 @@
 			productReference = EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F18CD2AD7099191462D7836F = {
+			"productType" = "com.apple.product-type.app-extension";
+			"productReference" = "6C1A2B1AAD8130ED4B01BDE9";
+			"buildConfigurationList" = "E903201C0A30DC0C6725B930";
+			"packageProductDependencies" = (
+				"EAA02C0DECEDCE4FA6170ABC",
+			);
+			"productName" = "ProgressWidget";
+			"isa" = "PBXNativeTarget";
+			"buildPhases" = (
+				"FD5CA63C6125ADE5AD748713",
+				"64812D7C834F0AF5E51EF23E",
+				"F366E0940FACA73123CC61BA",
+			);
+			"dependencies" = (
+			);
+			"name" = "ProgressWidget";
+			"buildRules" = (
+			);
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -294,6 +382,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
+					F18CD2AD7099191462D7836F = {
+						CreatedOnToolsVersion = 27.0;
+						SystemCapabilities = { "com.apple.ApplicationGroups.iOS" = { enabled = 1; }; };
+					};
 					83EAD5A24C2F25EE0DE67DA8 = {
 						CreatedOnToolsVersion = 16.0;
 						SystemCapabilities = {
@@ -357,6 +449,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				F18CD2AD7099191462D7836F,
 				A10BE4E9182668B276660CE5 /* Dopagaki */,
 				9E9E18F7D8A4992AD837F39C /* ActivityMonitor */,
 				AC03FBC5CB75AFF4847C7FA9 /* ShieldConfiguration */,
@@ -397,6 +490,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F366E0940FACA73123CC61BA = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -404,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B031D6DCA1890E4A22B520F,
 				28BD2EB851B8E90BE9DD5C84 /* Extensions/ActivityMonitor/ActivityMonitor.swift in Sources */,
 				CD8CD2DEB03858D1EE14E601 /* Shared/Persistence.swift in Sources */,
 				43863C7195C7F75BABFDD56D /* Shared/ScreenTimePolicy.swift in Sources */,
@@ -422,6 +523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E53FB49892551DBE87FEC8,
 				4144459E634F6F23363881DB,
 				8131EBAE163DF8BB58EA55FF /* App/AppStore.swift in Sources */,
 				BDCDF24FE9639EE2C990ADF8 /* App/Celebrations/CompletionPresentation.swift in Sources */,
@@ -454,6 +556,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FD5CA63C6125ADE5AD748713 = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"72F10D67ECD6D09D92E692E7",
+				"5A22AEB3293896E5B75DBF24",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -472,6 +583,11 @@
 			target = 83EAD5A24C2F25EE0DE67DA8 /* ShieldAction */;
 			targetProxy = 3D2A217ACF804CD8E5A8FE5A /* PBXContainerItemProxy */;
 		};
+		FA090FCEB03E94EC40183197 = {
+			"isa" = "PBXTargetDependency";
+			"target" = "F18CD2AD7099191462D7836F";
+			"targetProxy" = "FF5A9EDD4D4E48C4717A3917";
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -483,6 +599,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
@@ -511,6 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/Info.plist;
@@ -539,6 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ShieldConfiguration/Info.plist;
@@ -569,6 +688,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ActivityMonitor/Info.plist;
@@ -599,6 +719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ActivityMonitor/Info.plist;
@@ -629,6 +750,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ShieldAction/Info.plist;
@@ -704,6 +826,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ShieldAction/Info.plist;
@@ -779,6 +902,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				DOPA_URL_SCHEME = dopagaki;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Extensions/ShieldConfiguration/Info.plist;
@@ -800,6 +924,60 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
+		};
+		117E2BFEE6E192C24842D308 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "Extensions/ProgressWidget/ProgressWidget.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.ProgressWidget";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"SDKROOT" = "iphoneos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "Extensions/ProgressWidget/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
+		};
+		8C57B4DFF6E1D9009C7F2CE2 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "Extensions/ProgressWidget/ProgressWidget.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.ProgressWidget";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"TARGETED_DEVICE_FAMILY" = "1";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"SDKROOT" = "iphoneos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "Extensions/ProgressWidget/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
 		};
 /* End XCBuildConfiguration section */
 
@@ -849,6 +1027,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E903201C0A30DC0C6725B930 = {
+			"isa" = "XCConfigurationList";
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+			"buildConfigurations" = (
+				"8C57B4DFF6E1D9009C7F2CE2",
+				"117E2BFEE6E192C24842D308",
+			);
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -868,6 +1055,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A48D34F60E7715FD39EE57BC /* XCLocalSwiftPackageReference "." */;
 			productName = DopagakiCore;
+		};
+		EAA02C0DECEDCE4FA6170ABC = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "A48D34F60E7715FD39EE57BC";
+			"productName" = "DopagakiCore";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

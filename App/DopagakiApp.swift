@@ -40,6 +40,12 @@ struct RootView: View {
             SettingsView().tabItem { Label("設定", systemImage: "slider.horizontal.3") }.tag(3)
         }
         .tint(DopaTheme.green)
+        .onOpenURL { url in
+            let scheme = Bundle.main.object(forInfoDictionaryKey: "DopaURLScheme") as? String ?? "dopagaki"
+            guard url.scheme == scheme, url.host == "today" else { return }
+            store.refreshToday()
+            tab = 0
+        }
         .fullScreenCover(item: $presentedCompletion, onDismiss: {
             store.completion = nil
             if let id = pendingRecord {

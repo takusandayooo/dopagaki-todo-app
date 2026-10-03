@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import UIKit
 import DopagakiCore
+import WidgetKit
 
 @MainActor
 final class AppStore: ObservableObject {
@@ -202,6 +203,11 @@ final class AppStore: ObservableObject {
             try repository.save(draft)
             state = draft
             lastError = nil
+            #if !DOPA_PERSONAL_TEAM || DOPA_WIDGETS
+            if (try? WidgetSnapshotRepository().save(WidgetProgressSnapshot(state: draft, at: Date()))) == true {
+                WidgetCenter.shared.reloadTimelines(ofKind: WidgetSnapshotRepository.kind)
+            }
+            #endif
             screenTime.sync(with: draft)
             notificationTask?.cancel()
             notificationTask = Task { await notifications.reconcile(state: draft) }

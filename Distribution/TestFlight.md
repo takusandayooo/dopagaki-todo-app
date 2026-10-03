@@ -8,7 +8,7 @@
 | --- | --- |
 | Apple Developer Program | **配布チーム未設定**。利用するチームのメンバーシップを確認して進める。無料のPersonal Team確認版はTestFlight用の配布版に使用しない |
 | 開発チームID・配布用Bundle ID | 未入力。アプリ本体と3拡張機能の識別子を確定する |
-| App Group | 全4ターゲットで同じ、自分のチームに登録した識別子を使用する |
+| App Group | 全5ターゲットで同じ、自分のチームに登録した識別子を使用する |
 | App Store Connectのアプリ | 未確認。配布用Bundle IDに対応するアプリレコードを作成する |
 | Family Controls配布権限 | Appleの承認状態を本体と3拡張機能すべてで確認する |
 | バージョン・ビルド番号 | 配布コピーで設定する。次のアップロードではビルド番号を更新する |
@@ -37,9 +37,9 @@ Family Controlsの配布申請はAccount Holderが行います。このプロジ
      --output /private/tmp/dopagaki-testflight
    ```
 
-   元プロジェクトは変更しません。生成先は元workspaceの外の空のディレクトリにしてください。全4ターゲットとCoreパッケージをコピーし、設定結果を `testflight-preparation.json` に保存します。バージョンは現行の1.0を保持し、指定したビルド番号を本体・全拡張に揃えます。バージョンを変更する場合は、全4ターゲットの `Info.plist` の `CFBundleShortVersionString` と `MARKETING_VERSION` も揃えます。次回は新しい生成先と未使用のビルド番号を指定します。
+   元プロジェクトは変更しません。生成先は元workspaceの外の空のディレクトリにしてください。全5ターゲットとCoreパッケージをコピーし、設定結果を `testflight-preparation.json` に保存します。バージョンは現行の1.0を保持し、指定したビルド番号を本体・全拡張に揃えます。バージョンを変更する場合は、全5ターゲットの `Info.plist` の `CFBundleShortVersionString` と `MARKETING_VERSION` も揃えます。次回は新しい生成先と未使用のビルド番号を指定します。
 
-2. 生成先の `Dopagaki.xcodeproj` をXcode 26以降で開き、通常版の `Dopagaki` スキームを選びます。全4ターゲットのSigning & Capabilitiesで同じチーム、App Group、Family Controlsの配布権限を確認します。権限未承認の状態では署名・アップロードへ進めません。
+2. 生成先の `Dopagaki.xcodeproj` をXcode 26以降で開き、通常版の `Dopagaki` スキームを選びます。全5ターゲットのSigning & Capabilitiesで同じチームとApp Groupを確認します。Family Controlsの配布権限は本体とScreen Timeの3拡張で確認します（ProgressWidgetには不要）。権限未承認の状態では署名・アップロードへ進めません。
 3. 実機向けのRelease Archiveを作成します。Organizerで署名・アプリ本体・拡張機能・バージョンを確認し、Validate後にApp Store Connectへアップロードします。外部テストも予定する場合は **TestFlight Internal Onlyを選ばず**、通常のApp Store Connect配布を選びます。[Appleの外部テスト手順](https://developer.apple.com/help/app-store-connect/test-a-beta-version/invite-external-testers/)
 4. App Store Connect側の処理完了を待ち、暗号化に関する質問など未処理項目へ回答します。
 5. [BetaMetadata.json](BetaMetadata.json) の説明、What to Test、審査メモを転記します。`null` のフィードバックメール・審査連絡先・公開URLは本人の情報で埋めます。このJSONは転記用の下書きで、アップロードAPIへそのまま送るリクエストではありません。[Appleのテスト情報入力手順](https://developer.apple.com/help/app-store-connect/test-a-beta-version/provide-test-information/)

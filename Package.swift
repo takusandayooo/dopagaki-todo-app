@@ -11,7 +11,7 @@ let package = Package(
     targets: [
         .target(name: "DopagakiCore", path: "Core"),
         .testTarget(name: "DopagakiCoreTests", dependencies: ["DopagakiCore"], path: "CoreTests"),
-        .target(name: "DopagakiPersistence", dependencies: ["DopagakiCore"], path: "Shared", exclude: ["ScreenTimePolicy.swift"], sources: ["Persistence.swift"]),
+        .target(name: "DopagakiPersistence", dependencies: ["DopagakiCore"], path: "Shared", exclude: ["ScreenTimePolicy.swift"], sources: ["Persistence.swift", "WidgetSnapshotRepository.swift"]),
         .testTarget(name: "DopagakiPersistenceTests", dependencies: ["DopagakiPersistence", "DopagakiCore"], path: "PersistenceTests"),
         .executableTarget(name: "DopagakiChecks", dependencies: ["DopagakiCore", "DopagakiPersistence"], path: "Verification")
     ]

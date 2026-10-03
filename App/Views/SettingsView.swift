@@ -50,6 +50,13 @@ struct SettingsView: View {
                 } header: { Text("リマインダー") } footer: {
                     Text("完了したタスクの催促は停止します。通知の表示はiPhoneの集中モードや通知設定によって変わります。")
                 }
+                Section("アプリの外でも確認") {
+                    NavigationLink {
+                        WidgetGuideView()
+                    } label: {
+                        Label("ウィジェット・Macで見る", systemImage: "rectangle.3.group")
+                    }
+                }
                 #if DOPA_PERSONAL_TEAM
                 Section("実機確認版") {
                     Text("このバージョンでは、Screen Timeによる他アプリの制限は利用できません。")
@@ -92,6 +99,41 @@ struct SettingsView: View {
                 HapticsService.selection(tick, level: store.state.settings.haptics)
             }
         })
+    }
+}
+
+private struct WidgetGuideView: View {
+    var body: some View {
+        Form {
+            #if DOPA_PERSONAL_TEAM && !DOPA_WIDGETS
+            Section {
+                Text("この確認版にはウィジェットが含まれていません。ウィジェット対応版をインストールすると追加できます。")
+            }
+            #endif
+            Section("ホーム画面") {
+                Text("ホーム画面の空いている場所を長押しし、編集からウィジェットを追加。「ドパギキ」の「今日のマスト」を選びます。")
+                Text("小サイズはマストの残り件数、中サイズはレベルと全タスクの残り件数も表示します。タップすると「今日」を開きます。")
+            }
+            Section("ロック画面") {
+                Text("ロック画面を長押ししてカスタマイズし、ウィジェット欄から「ドパギキ」を選びます。円形・長方形・日付の上の表示に対応しています。")
+                Text("タスク名やメモは表示しません。件数を見せたくない場合は、iPhoneのロック中のウィジェット表示設定を変更できます。")
+            }
+            Section("Macのデスクトップ") {
+                Text("同じApple Accountを使うiPhoneのウィジェットをMacにも置けます。Macの「システム設定 → デスクトップとDock」でiPhoneウィジェットを有効にし、デスクトップを右クリックして追加します。")
+                Text("macOS Sonoma 14以降が必要です。iPhoneを近くに置くか、同じWi-Fiに接続してください。")
+            }
+            Section("Macで通知を受け取る") {
+                Text("Macの「iPhoneミラーリング」を設定して通知を許可し、「システム設定 → 通知 → iPhoneからの通知を許可」でドパギキを有効にします。")
+                Text("iPhone側でも「やることを通知」をオンにしてください。通知には残り件数が表示されます。")
+                Link("対応機種・設定をAppleの案内で確認", destination: URL(string: "https://support.apple.com/ja-jp/120421")!)
+            }
+            Section {
+                Text("表示の更新や通知のタイミングはOSが調整します。最新の件数を確認したいときはアプリを開いてください。Macへの表示はiPhoneとの連係で、Mac単体でのタスク編集・データ同期には対応していません。")
+            }
+        }
+        .navigationTitle("ウィジェットとMac")
+        .scrollContentBackground(.hidden)
+        .dopaPage()
     }
 }
 

@@ -38,5 +38,18 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>dev.dopagaki.todo.navigation</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(DOPA_URL_SCHEME)</string>
+			</array>
+		</dict>
+	</array>
+	<key>DopaURLScheme</key>
+	<string>$(DOPA_URL_SCHEME)</string>
 </dict>
 </plist>

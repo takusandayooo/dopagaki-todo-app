@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FORBIDDEN_PARTS = {".build", ".swiftpm", "DerivedData", "xcuserdata", "__pycache__", "Photos"}
 FORBIDDEN_SUFFIXES = {".p8", ".p12", ".pfx", ".pem", ".key", ".cer", ".mobileprovision",
                       ".provisionprofile", ".ipa", ".xcuserstate", ".log"}
-FORBIDDEN_NAMES = {".DS_Store", "state-v1.json", "screen-time-v1.json", "ExportOptions.plist",
+FORBIDDEN_NAMES = {".DS_Store", "state-v1.json", "screen-time-v1.json", "widget-progress-v1.json", "ExportOptions.plist",
                    "testflight-preparation.json"}
 RULES = {
     "private-key": r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----",

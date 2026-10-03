@@ -28,12 +28,20 @@ for uid, entry in objects.items():
     if entry["isa"] == "PBXBuildFile":
         assert entry.get("fileRef", entry.get("productRef")) in objects, uid
 targets = [o for o in objects.values() if o["isa"] == "PBXNativeTarget"]
-assert len(targets) == 4
+assert {t["name"] for t in targets} == {"Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction", "ProgressWidget"}
 for target in targets:
     for phase in target["buildPhases"]:
         assert phase in objects
     for dep in target["dependencies"]:
         assert dep in objects
+    if target["name"] == "ProgressWidget":
+        for config in objects[target["buildConfigurationList"]]["buildConfigurations"]:
+            settings = objects[config]["buildSettings"]
+            entitlements = plistlib.loads((ROOT / settings["CODE_SIGN_ENTITLEMENTS"]).read_bytes())
+            assert "com.apple.developer.family-controls" not in entitlements
+            assert entitlements["com.apple.security.application-groups"] == ["$(DOPA_APP_GROUP)"]
+        info = plistlib.loads((ROOT / "Extensions/ProgressWidget/Info.plist").read_bytes())
+        assert info["NSExtension"] == {"NSExtensionPointIdentifier": "com.apple.widgetkit-extension"}
     if target["name"] == "Dopagaki":
         resource_phase = next(objects[p] for p in target["buildPhases"] if objects[p]["isa"] == "PBXResourcesBuildPhase")
         resources = {objects[objects[b]["fileRef"]]["path"] for b in resource_phase["files"]}
@@ -60,5 +68,5 @@ for path in (ROOT / "App/Assets.xcassets").rglob("Contents.json"):
         if "filename" in image:
             assert (path.parent / image["filename"]).is_file(), image["filename"]
 ET.parse(ROOT / "Dopagaki.xcodeproj/xcshareddata/xcschemes/Dopagaki.xcscheme")
-print(f"PASS: {len(sources)} Swift source syntax, 4 native targets, plists, references, scheme")
+print(f"PASS: {len(sources)} Swift source syntax, 5 native targets, plists, references, scheme")
 print("iOS type-check/build and device behavior require Xcode; they were not run here.")
