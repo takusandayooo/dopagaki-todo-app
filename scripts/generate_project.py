@@ -44,6 +44,10 @@ def generate():
         ("ProgressWidget", "dev.dopagaki.todo.ProgressWidget", "com.apple.product-type.app-extension", "appex", ["Extensions/ProgressWidget/ProgressWidget.swift", "Shared/WidgetSnapshotRepository.swift"], "Extensions/ProgressWidget/Info.plist", "com.apple.widgetkit-extension"),
         ("ShieldAction", "dev.dopagaki.todo.ShieldAction", "com.apple.product-type.app-extension", "appex", ["Extensions/ShieldAction/ShieldActionExtension.swift"], "Extensions/ShieldAction/Info.plist", "com.apple.ManagedSettings.shield-action-service"),
     ]
+    specs += [
+        ("DopagakiWatch", "dev.dopagaki.todo.watchkitapp", "com.apple.product-type.application", "app", sorted(str(p.relative_to(ROOT)) for p in (ROOT / "WatchApp").rglob("*.swift")) + ["Shared/WidgetSnapshotRepository.swift", "Shared/WatchProgressRepository.swift"], "WatchApp/Info.plist", None),
+        ("WatchProgressWidget", "dev.dopagaki.todo.watchkitapp.WatchProgressWidget", "com.apple.product-type.app-extension", "appex", ["Extensions/ProgressWidget/ProgressWidget.swift", "Shared/WidgetSnapshotRepository.swift", "Shared/WatchProgressRepository.swift"], "Extensions/WatchProgressWidget/Info.plist", "com.apple.widgetkit-extension"),
+    ]
     files = []
     for path in sorted(set(p for spec in specs for p in spec[4])):
         files.append(add("file." + path, "PBXFileReference", lastKnownFileType="sourcecode.swift", path=path, sourceTree="SOURCE_ROOT"))
@@ -51,6 +55,8 @@ def generate():
         files.append(add("file." + path, "PBXFileReference", lastKnownFileType="net.daringfireball.markdown", path=path, sourceTree="SOURCE_ROOT"))
     catalog = "App/Assets.xcassets"
     files.append(add("file." + catalog, "PBXFileReference", lastKnownFileType="folder.assetcatalog", path=catalog, sourceTree="SOURCE_ROOT"))
+    watch_catalog = "WatchApp/Assets.xcassets"
+    files.append(add("file." + watch_catalog, "PBXFileReference", lastKnownFileType="folder.assetcatalog", path=watch_catalog, sourceTree="SOURCE_ROOT"))
     sounds = "App/Resources/RewardSounds"
     files.append(add("file." + sounds, "PBXFileReference", lastKnownFileType="folder", path=sounds, sourceTree="SOURCE_ROOT"))
     privacy = "App/PrivacyInfo.xcprivacy"
@@ -59,35 +65,42 @@ def generate():
     project = ident("project")
     products, targets = [], []
     for name, bundle, product_type, suffix, sources, info_path, extension_point in specs:
+        is_watch = name in ["DopagakiWatch", "WatchProgressWidget"]
+        is_app = suffix == "app"
         product = add("product." + name, "PBXFileReference", explicitFileType="wrapper.application" if suffix == "app" else "wrapper.app-extension", path=f"{name}.{suffix}", sourceTree="BUILT_PRODUCTS_DIR", includeInIndex=0)
         products.append(product)
         builds = [add(f"build.{name}.{p}", "PBXBuildFile", fileRef=ident("file." + p)) for p in sources]
         source_phase = add("sources." + name, "PBXSourcesBuildPhase", buildActionMask=2147483647, files=builds, runOnlyForDeploymentPostprocessing=0)
         package_deps, framework_builds = [], []
-        if name in ["Dopagaki", "ActivityMonitor", "ProgressWidget"]:
+        if name in ["Dopagaki", "ActivityMonitor", "ProgressWidget", "DopagakiWatch", "WatchProgressWidget"]:
             dep = add("dependency.core." + name, "XCSwiftPackageProductDependency", package=package, productName="DopagakiCore")
             package_deps.append(dep)
             framework_builds.append(add("build.core." + name, "PBXBuildFile", productRef=dep))
         frameworks = add("frameworks." + name, "PBXFrameworksBuildPhase", buildActionMask=2147483647, files=framework_builds, runOnlyForDeploymentPostprocessing=0)
         resource_files = [add("build.assets." + name, "PBXBuildFile", fileRef=ident("file." + catalog))] if name == "Dopagaki" else []
+        if name == "DopagakiWatch":
+            resource_files.append(add("build.assets." + name, "PBXBuildFile", fileRef=ident("file." + watch_catalog)))
         if name == "Dopagaki":
             resource_files.append(add("build.Dopagaki." + sounds, "PBXBuildFile", fileRef=ident("file." + sounds)))
             resource_files.append(add("build.Dopagaki." + privacy, "PBXBuildFile", fileRef=ident("file." + privacy)))
         resources = add("resources." + name, "PBXResourcesBuildPhase", buildActionMask=2147483647, files=resource_files, runOnlyForDeploymentPostprocessing=0)
-        entitlements_path = "App/Dopagaki.entitlements" if name == "Dopagaki" else f"Extensions/{name}/{name}.entitlements"
+        entitlements_path = "App/Dopagaki.entitlements" if name == "Dopagaki" else "WatchApp/DopagakiWatch.entitlements" if name == "DopagakiWatch" else f"Extensions/{name}/{name}.entitlements"
         entitlements = {"com.apple.security.application-groups": ["$(DOPA_APP_GROUP)"]}
-        if name != "ProgressWidget":
+        if name in ["Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction"]:
             entitlements["com.apple.developer.family-controls"] = True
         plist(entitlements_path, entitlements)
-        info = {"CFBundleDevelopmentRegion": "ja", "CFBundleDisplayName": "ドパギキ" if name == "Dopagaki" else name,
+        info = {"CFBundleDevelopmentRegion": "ja", "CFBundleDisplayName": "ドパギキ" if is_app else name,
                 "CFBundleExecutable": "$(EXECUTABLE_NAME)", "CFBundleIdentifier": "$(PRODUCT_BUNDLE_IDENTIFIER)",
                 "CFBundleInfoDictionaryVersion": "6.0", "CFBundleName": "$(PRODUCT_NAME)",
-                "CFBundlePackageType": "APPL" if name == "Dopagaki" else "XPC!", "CFBundleShortVersionString": "1.0", "CFBundleVersion": "1", "DopaAppGroup": "$(DOPA_APP_GROUP)", "DopaURLScheme": "$(DOPA_URL_SCHEME)"}
+                "CFBundlePackageType": "APPL" if is_app else "XPC!", "CFBundleShortVersionString": "1.0", "CFBundleVersion": "1", "DopaAppGroup": "$(DOPA_APP_GROUP)", "DopaURLScheme": "$(DOPA_URL_SCHEME)"}
         if extension_point:
             principal = "ActivityMonitor" if name == "ActivityMonitor" else name + "Extension"
             info["NSExtension"] = {"NSExtensionPointIdentifier": extension_point}
-            if name != "ProgressWidget":
+            if extension_point != "com.apple.widgetkit-extension":
                 info["NSExtension"]["NSExtensionPrincipalClass"] = f"$(PRODUCT_MODULE_NAME).{principal}"
+        elif name == "DopagakiWatch":
+            info.update({"WKApplication": True, "WKCompanionAppBundleIdentifier": "$(DOPA_PHONE_BUNDLE_ID)",
+                         "WKRunsIndependentlyOfCompanionApp": False, "ITSAppUsesNonExemptEncryption": False})
         else:
             info.update({"LSRequiresIPhoneOS": True, "UILaunchScreen": {}, "UIUserInterfaceStyle": "Dark",
                          "ITSAppUsesNonExemptEncryption": False,
@@ -103,6 +116,12 @@ def generate():
                     "TARGETED_DEVICE_FAMILY": "1", "SDKROOT": "iphoneos", "SUPPORTED_PLATFORMS": "iphoneos iphonesimulator",
                     "ENABLE_PREVIEWS": "YES", "SWIFT_EMIT_LOC_STRINGS": "YES",
                     "LD_RUNPATH_SEARCH_PATHS": "$(inherited) @executable_path/Frameworks" if name == "Dopagaki" else "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"}
+        if is_watch:
+            settings.pop("IPHONEOS_DEPLOYMENT_TARGET", None)
+            settings.update({"SDKROOT": "watchos", "SUPPORTED_PLATFORMS": "watchos watchsimulator", "TARGETED_DEVICE_FAMILY": "4",
+                             "WATCHOS_DEPLOYMENT_TARGET": "10.0", "DOPA_PHONE_BUNDLE_ID": "dev.dopagaki.todo",
+                             "LD_RUNPATH_SEARCH_PATHS": "$(inherited) @executable_path/Frameworks" if is_app else "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks",
+                             "SKIP_INSTALL": "YES"})
         if extension_point:
             settings.update({"APPLICATION_EXTENSION_API_ONLY": "YES", "SKIP_INSTALL": "YES"})
         else:
@@ -112,18 +131,22 @@ def generate():
                      productReference=product, buildConfigurationList=config, buildPhases=[source_phase, frameworks, resources],
                      buildRules=[], dependencies=[], packageProductDependencies=package_deps)
         targets.append(target)
-    embed_files, dependencies = [], []
-    for name, *_ in specs[1:]:
-        embed_files.append(add("embed." + name, "PBXBuildFile", fileRef=ident("product." + name), settings={"ATTRIBUTES": ["RemoveHeadersOnCopy"]}))
-        proxy = add("proxy." + name, "PBXContainerItemProxy", containerPortal=project, proxyType=1, remoteGlobalIDString=ident("target." + name), remoteInfo=name)
-        dependencies.append(add("targetdep." + name, "PBXTargetDependency", target=ident("target." + name), targetProxy=proxy))
-    embed_phase = add("embed.phase", "PBXCopyFilesBuildPhase", buildActionMask=2147483647, dstPath="", dstSubfolderSpec=13, files=embed_files, name="Embed App Extensions", runOnlyForDeploymentPostprocessing=0)
-    objects[targets[0]]["dependencies"] = dependencies
-    objects[targets[0]]["buildPhases"].append(embed_phase)
+    def embed(parent, children, key, destination=13, path=""):
+        embed_files, dependencies = [], []
+        for name in children:
+            embed_files.append(add("embed." + name, "PBXBuildFile", fileRef=ident("product." + name), settings={"ATTRIBUTES": ["RemoveHeadersOnCopy"]}))
+            proxy = add("proxy." + name, "PBXContainerItemProxy", containerPortal=project, proxyType=1, remoteGlobalIDString=ident("target." + name), remoteInfo=name)
+            dependencies.append(add("targetdep." + name, "PBXTargetDependency", target=ident("target." + name), targetProxy=proxy))
+        phase = add(key, "PBXCopyFilesBuildPhase", buildActionMask=2147483647, dstPath=path, dstSubfolderSpec=destination, files=embed_files, name="Embed Watch Content" if destination == 16 else "Embed App Extensions", runOnlyForDeploymentPostprocessing=0)
+        objects[ident("target." + parent)]["dependencies"].extend(dependencies)
+        objects[ident("target." + parent)]["buildPhases"].append(phase)
+    embed("Dopagaki", ["ActivityMonitor", "ShieldConfiguration", "ShieldAction", "ProgressWidget"], "embed.phase")
+    embed("Dopagaki", ["DopagakiWatch"], "embed.watch", 16, "$(CONTENTS_FOLDER_PATH)/Watch")
+    embed("DopagakiWatch", ["WatchProgressWidget"], "embed.watchwidget")
     product_group = add("products", "PBXGroup", children=products, name="Products", sourceTree="<group>")
     main_group = add("main", "PBXGroup", children=files + [product_group], sourceTree="<group>")
     config = config_list("project.config", {"CLANG_ENABLE_MODULES": "YES", "CLANG_ENABLE_OBJC_ARC": "YES", "ENABLE_TESTABILITY": "YES", "SDKROOT": "iphoneos", "IPHONEOS_DEPLOYMENT_TARGET": "17.0", "SWIFT_VERSION": "5.0", "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"})
-    add("project", "PBXProject", attributes={"BuildIndependentTargetsInParallel": "YES", "LastUpgradeCheck": "1600", "TargetAttributes": {t: {"CreatedOnToolsVersion": "16.0", "SystemCapabilities": {"com.apple.FamilyControls": {"enabled": 0 if t == ident("target.ProgressWidget") else 1}, "com.apple.ApplicationGroups.iOS": {"enabled": 1}}} for t in targets}}, buildConfigurationList=config, compatibilityVersion="Xcode 14.0", developmentRegion="ja", knownRegions=["ja", "en", "Base"], mainGroup=main_group, productRefGroup=product_group, projectDirPath="", projectRoot="", targets=targets, packageReferences=[package])
+    add("project", "PBXProject", attributes={"BuildIndependentTargetsInParallel": "YES", "LastUpgradeCheck": "1600", "TargetAttributes": {t: {"CreatedOnToolsVersion": "16.0", "SystemCapabilities": {"com.apple.FamilyControls": {"enabled": 1 if t in [ident("target." + name) for name in ["Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction"]] else 0}, "com.apple.ApplicationGroups.iOS": {"enabled": 1}}} for t in targets}}, buildConfigurationList=config, compatibilityVersion="Xcode 14.0", developmentRegion="ja", knownRegions=["ja", "en", "Base"], mainGroup=main_group, productRefGroup=product_group, projectDirPath="", projectRoot="", targets=targets, packageReferences=[package])
     project_dir = ROOT / "Dopagaki.xcodeproj"
     project_dir.mkdir(exist_ok=True)
     # JSON-form OpenStep property lists are accepted by plutil; convert to ASCII below.
@@ -147,6 +170,8 @@ def generate():
  <ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES"><BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="{targets[0]}" BuildableName="Dopagaki.app" BlueprintName="Dopagaki" ReferencedContainer="container:Dopagaki.xcodeproj"/></BuildableProductRunnable></ProfileAction>
  <AnalyzeAction buildConfiguration="Debug"/><ArchiveAction buildConfiguration="Release" revealArchiveInOrganizer="YES"/>
 </Scheme>''')
+    watch_scheme = scheme.with_name("DopagakiWatch.xcscheme")
+    watch_scheme.write_text(scheme.read_text().replace(targets[0], ident("target.DopagakiWatch")).replace("Dopagaki.app", "DopagakiWatch.app").replace('BlueprintName="Dopagaki"', 'BlueprintName="DopagakiWatch"'))
     print(f"Generated {project_dir.name}: {len(targets)} targets, {len(objects)} project objects")
 
 

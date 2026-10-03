@@ -5,6 +5,7 @@ import DopagakiCore
 @MainActor
 struct DopagakiApp: App {
     @StateObject private var store = AppStore()
+    init() { _ = WatchSyncService.shared }
     var body: some Scene {
         WindowGroup {
             RootView()

@@ -70,6 +70,76 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
 		};
+		07C989D77F4C5E47D1341067 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "788918D55E7EFD95E4C9ABBC";
+		};
+		1B4D88D13473ADE4D80834F8 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "81185FCFFAA5985727CD8F2C";
+			"settings" = {
+				"ATTRIBUTES" = (
+					"RemoveHeadersOnCopy",
+				);
+			};
+		};
+		31647DEFC9BD92B8A0F62E5A = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5F7C70DCC98239E702E478A9";
+		};
+		35311CA4888E65508C6E1220 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5F7C70DCC98239E702E478A9";
+		};
+		4800E608914EAEDADF635494 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5F7C70DCC98239E702E478A9";
+		};
+		5986A90AAA96FAF917A70325 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
+		};
+		5C0A8C2B2659F97964A0AA3C = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "EFBDDCD547F296C5AFE2A2A7";
+			"settings" = {
+				"ATTRIBUTES" = (
+					"RemoveHeadersOnCopy",
+				);
+			};
+		};
+		608D8C178FF27DB2D8DE9DB9 = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "7480C06FFE500D3A8494C5C8";
+		};
+		95FCFE48B34269C30319AC21 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "A969D5790EC3264C7D027640";
+		};
+		B68D4F2F1711752C6D14D551 = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "7E5D607610D6012178A29CB5";
+		};
+		C9E823DE7930CF1963F38F36 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "CDD522CA06345F26F2ADC2C6";
+		};
+		CC8C0BEB8F0679E2E2D65DA4 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5F7C70DCC98239E702E478A9";
+		};
+		DA612FCE063497F1359B17D6 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "F5921ABA44314694B391A0EF";
+		};
+		EB2F93886823FE9B7E4AA664 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "522BB3A106417BD0A63CA5D4";
+		};
+		F39D3B260543427CDC3B5A70 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9D9CC6EEB16D5A34FB734DCA";
+		};
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +171,20 @@
 			"remoteInfo" = "ProgressWidget";
 			"proxyType" = "1";
 		};
+		1B4293BCAC4D1E0BBE218E93 = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"remoteGlobalIDString" = "20BE4F3B9EAAA68170795939";
+			"remoteInfo" = "WatchProgressWidget";
+			"proxyType" = "1";
+		};
+		810923B49A5E16CE45B0FCF5 = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"remoteGlobalIDString" = "9FC9E9AA527A829A60516B5B";
+			"remoteInfo" = "DopagakiWatch";
+			"proxyType" = "1";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,6 +201,28 @@
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C6D970FE286F66C325E421F = {
+			"buildActionMask" = "2147483647";
+			"dstSubfolderSpec" = "13";
+			"isa" = "PBXCopyFilesBuildPhase";
+			"runOnlyForDeploymentPostprocessing" = "0";
+			"dstPath" = "";
+			"files" = (
+				"1B4D88D13473ADE4D80834F8",
+			);
+			"name" = "Embed App Extensions";
+		};
+		6875401988B5EAB01E62EC01 = {
+			"buildActionMask" = "2147483647";
+			"dstSubfolderSpec" = "16";
+			"isa" = "PBXCopyFilesBuildPhase";
+			"runOnlyForDeploymentPostprocessing" = "0";
+			"dstPath" = "$(CONTENTS_FOLDER_PATH)/Watch";
+			"files" = (
+				"5C0A8C2B2659F97964A0AA3C",
+			);
+			"name" = "Embed Watch Content";
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -173,6 +279,50 @@
 			"lastKnownFileType" = "sourcecode.swift";
 			"sourceTree" = "SOURCE_ROOT";
 		};
+		5F7C70DCC98239E702E478A9 = {
+			"path" = "Shared/WatchProgressRepository.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		788918D55E7EFD95E4C9ABBC = {
+			"path" = "WatchApp/Assets.xcassets";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder.assetcatalog";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		81185FCFFAA5985727CD8F2C = {
+			"path" = "WatchProgressWidget.appex";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.app-extension";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		A969D5790EC3264C7D027640 = {
+			"path" = "App/Services/WatchSyncService.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		CDD522CA06345F26F2ADC2C6 = {
+			"path" = "WatchApp/DopagakiWatchApp.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		EFBDDCD547F296C5AFE2A2A7 = {
+			"path" = "DopagakiWatch.app";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.application";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		F5921ABA44314694B391A0EF = {
+			"path" = "WatchApp/WatchStore.swift";
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,12 +364,33 @@
 			);
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
+		8A02F9205D83F47E336F0ABF = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"608D8C178FF27DB2D8DE9DB9",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		B62A5FA3A28D619AF8028F9B = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"B68D4F2F1711752C6D14D551",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B28B7AF69320201D1CF206EB = {
 			isa = PBXGroup;
 			children = (
+				A969D5790EC3264C7D027640,
+				5F7C70DCC98239E702E478A9,
+				CDD522CA06345F26F2ADC2C6,
+				F5921ABA44314694B391A0EF,
+				788918D55E7EFD95E4C9ABBC,
 				522BB3A106417BD0A63CA5D4,
 				9D9CC6EEB16D5A34FB734DCA,
 				36C63419A9B1F1622A9C6084,
@@ -258,6 +429,8 @@
 		FBDC4F23F93125BBEEAE800C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				EFBDDCD547F296C5AFE2A2A7,
+				81185FCFFAA5985727CD8F2C,
 				6C1A2B1AAD8130ED4B01BDE9,
 				8D3909FFF910DAF340D0CDD6 /* Dopagaki.app */,
 				97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */,
@@ -313,6 +486,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE74B7482D866920EC1113E8 /* Build configuration list for PBXNativeTarget "Dopagaki" */;
 			buildPhases = (
+				6875401988B5EAB01E62EC01,
 				97497B4035CBBE4034BDC990 /* Sources */,
 				D83BD9D177AAE3A89ABD8311 /* Frameworks */,
 				8417820DCDE4D6FF5443A2DE /* Resources */,
@@ -321,6 +495,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				64159C42B440ABC60FA01E2C,
 				FA090FCEB03E94EC40183197,
 				1D47B61022795632EDEB99BA /* PBXTargetDependency */,
 				0733B52D09279687F5B5ED2E /* PBXTargetDependency */,
@@ -373,6 +548,48 @@
 			"buildRules" = (
 			);
 		};
+		20BE4F3B9EAAA68170795939 = {
+			"productType" = "com.apple.product-type.app-extension";
+			"productReference" = "81185FCFFAA5985727CD8F2C";
+			"buildConfigurationList" = "1F4D07DE837854C70C3E2A1B";
+			"packageProductDependencies" = (
+				"7E5D607610D6012178A29CB5",
+			);
+			"productName" = "WatchProgressWidget";
+			"isa" = "PBXNativeTarget";
+			"buildPhases" = (
+				"79EB15BE2273692778C1831C",
+				"B62A5FA3A28D619AF8028F9B",
+				"80B36E2F97A1001472D7C599",
+			);
+			"dependencies" = (
+			);
+			"name" = "WatchProgressWidget";
+			"buildRules" = (
+			);
+		};
+		9FC9E9AA527A829A60516B5B = {
+			"productType" = "com.apple.product-type.application";
+			"productReference" = "EFBDDCD547F296C5AFE2A2A7";
+			"buildConfigurationList" = "3D8045489146C3D1082F6FEC";
+			"packageProductDependencies" = (
+				"7480C06FFE500D3A8494C5C8",
+			);
+			"productName" = "DopagakiWatch";
+			"isa" = "PBXNativeTarget";
+			"buildPhases" = (
+				"B0D1E72F9AB51F0150815BC0",
+				"8A02F9205D83F47E336F0ABF",
+				"EDE0F3E5DF535A35D7B362FA",
+				"3C6D970FE286F66C325E421F",
+			);
+			"dependencies" = (
+				"4A6304FB79A4EA62EFB3E00F",
+			);
+			"name" = "DopagakiWatch";
+			"buildRules" = (
+			);
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -382,6 +599,22 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
+					9FC9E9AA527A829A60516B5B = {
+						"CreatedOnToolsVersion" = "27.0";
+						"SystemCapabilities" = {
+							"com.apple.ApplicationGroups.iOS" = {
+								"enabled" = 1;
+							};
+						};
+					};
+					20BE4F3B9EAAA68170795939 = {
+						"CreatedOnToolsVersion" = "27.0";
+						"SystemCapabilities" = {
+							"com.apple.ApplicationGroups.iOS" = {
+								"enabled" = 1;
+							};
+						};
+					};
 					F18CD2AD7099191462D7836F = {
 						CreatedOnToolsVersion = 27.0;
 						SystemCapabilities = { "com.apple.ApplicationGroups.iOS" = { enabled = 1; }; };
@@ -449,6 +682,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				9FC9E9AA527A829A60516B5B,
+				20BE4F3B9EAAA68170795939,
 				F18CD2AD7099191462D7836F,
 				A10BE4E9182668B276660CE5 /* Dopagaki */,
 				9E9E18F7D8A4992AD837F39C /* ActivityMonitor */,
@@ -497,6 +732,21 @@
 			);
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
+		80B36E2F97A1001472D7C599 = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		EDE0F3E5DF535A35D7B362FA = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"07C989D77F4C5E47D1341067",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -504,6 +754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8C0BEB8F0679E2E2D65DA4,
 				1B031D6DCA1890E4A22B520F,
 				28BD2EB851B8E90BE9DD5C84 /* Extensions/ActivityMonitor/ActivityMonitor.swift in Sources */,
 				CD8CD2DEB03858D1EE14E601 /* Shared/Persistence.swift in Sources */,
@@ -523,6 +774,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FCFE48B34269C30319AC21,
+				4800E608914EAEDADF635494,
 				E4E53FB49892551DBE87FEC8,
 				4144459E634F6F23363881DB,
 				8131EBAE163DF8BB58EA55FF /* App/AppStore.swift in Sources */,
@@ -565,6 +818,27 @@
 			);
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
+		79EB15BE2273692778C1831C = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"EB2F93886823FE9B7E4AA664",
+				"F39D3B260543427CDC3B5A70",
+				"31647DEFC9BD92B8A0F62E5A",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		B0D1E72F9AB51F0150815BC0 = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"C9E823DE7930CF1963F38F36",
+				"DA612FCE063497F1359B17D6",
+				"5986A90AAA96FAF917A70325",
+				"35311CA4888E65508C6E1220",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -587,6 +861,16 @@
 			"isa" = "PBXTargetDependency";
 			"target" = "F18CD2AD7099191462D7836F";
 			"targetProxy" = "FF5A9EDD4D4E48C4717A3917";
+		};
+		4A6304FB79A4EA62EFB3E00F = {
+			"isa" = "PBXTargetDependency";
+			"target" = "20BE4F3B9EAAA68170795939";
+			"targetProxy" = "1B4293BCAC4D1E0BBE218E93";
+		};
+		64159C42B440ABC60FA01E2C = {
+			"isa" = "PBXTargetDependency";
+			"target" = "9FC9E9AA527A829A60516B5B";
+			"targetProxy" = "810923B49A5E16CE45B0FCF5";
 		};
 /* End PBXTargetDependency section */
 
@@ -979,6 +1263,118 @@
 				"GENERATE_INFOPLIST_FILE" = "NO";
 			};
 		};
+		2F707CE111340A462A4534D5 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "Extensions/WatchProgressWidget/WatchProgressWidget.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "watchos watchsimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.watchkitapp.WatchProgressWidget";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"TARGETED_DEVICE_FAMILY" = "4";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"WATCHOS_DEPLOYMENT_TARGET" = "10.0";
+				"SDKROOT" = "watchos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"DOPA_PHONE_BUNDLE_ID" = "dev.dopagaki.todo";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "Extensions/WatchProgressWidget/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
+		};
+		4987393892CA7CF07F70B2A7 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "WatchApp/DopagakiWatch.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "watchos watchsimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.watchkitapp";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"TARGETED_DEVICE_FAMILY" = "4";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"WATCHOS_DEPLOYMENT_TARGET" = "10.0";
+				"SDKROOT" = "watchos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"DOPA_PHONE_BUNDLE_ID" = "dev.dopagaki.todo";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "WatchApp/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
+		};
+		BCCB963F247E4AF80F8F701A = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "WatchApp/DopagakiWatch.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "watchos watchsimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.watchkitapp";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"TARGETED_DEVICE_FAMILY" = "4";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"WATCHOS_DEPLOYMENT_TARGET" = "10.0";
+				"SDKROOT" = "watchos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"DOPA_PHONE_BUNDLE_ID" = "dev.dopagaki.todo";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "WatchApp/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
+		};
+		CCA322DFAD087758D22DD258 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"CODE_SIGN_ENTITLEMENTS" = "Extensions/WatchProgressWidget/WatchProgressWidget.entitlements";
+				"DEVELOPMENT_TEAM" = "";
+				"SUPPORTED_PLATFORMS" = "watchos watchsimulator";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "dev.dopagaki.todo.watchkitapp.WatchProgressWidget";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"TARGETED_DEVICE_FAMILY" = "4";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"DOPA_URL_SCHEME" = "dopagaki";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"WATCHOS_DEPLOYMENT_TARGET" = "10.0";
+				"SDKROOT" = "watchos";
+				"LD_RUNPATH_SEARCH_PATHS" = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				"DOPA_APP_GROUP" = "group.dev.dopagaki.todo";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"ENABLE_PREVIEWS" = "YES";
+				"DOPA_PHONE_BUNDLE_ID" = "dev.dopagaki.todo";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"INFOPLIST_FILE" = "Extensions/WatchProgressWidget/Info.plist";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+			};
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1036,6 +1432,24 @@
 				"117E2BFEE6E192C24842D308",
 			);
 		};
+		1F4D07DE837854C70C3E2A1B = {
+			"isa" = "XCConfigurationList";
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+			"buildConfigurations" = (
+				"2F707CE111340A462A4534D5",
+				"CCA322DFAD087758D22DD258",
+			);
+		};
+		3D8045489146C3D1082F6FEC = {
+			"isa" = "XCConfigurationList";
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+			"buildConfigurations" = (
+				"4987393892CA7CF07F70B2A7",
+				"BCCB963F247E4AF80F8F701A",
+			);
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -1057,6 +1471,16 @@
 			productName = DopagakiCore;
 		};
 		EAA02C0DECEDCE4FA6170ABC = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "A48D34F60E7715FD39EE57BC";
+			"productName" = "DopagakiCore";
+		};
+		7480C06FFE500D3A8494C5C8 = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "A48D34F60E7715FD39EE57BC";
+			"productName" = "DopagakiCore";
+		};
+		7E5D607610D6012178A29CB5 = {
 			"isa" = "XCSwiftPackageProductDependency";
 			"package" = "A48D34F60E7715FD39EE57BC";
 			"productName" = "DopagakiCore";

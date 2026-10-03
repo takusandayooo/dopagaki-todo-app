@@ -17,18 +17,25 @@ struct ProgressEntry: TimelineEntry {
 }
 
 struct ProgressProvider: TimelineProvider {
+    private func snapshot() -> WidgetProgressSnapshot? {
+        #if os(watchOS)
+        return (try? WatchProgressRepository().load())?.snapshot
+        #else
+        return try? WidgetSnapshotRepository().load()
+        #endif
+    }
     func placeholder(in context: Context) -> ProgressEntry { .example(at: Date()) }
 
     func getSnapshot(in context: Context, completion: @escaping (ProgressEntry) -> Void) {
         let now = Date()
         if context.isPreview { completion(.example(at: now)); return }
-        let snapshot = try? WidgetSnapshotRepository().load()
+        let snapshot = snapshot()
         completion(ProgressEntry(date: now, progress: snapshot?.progress(at: now)))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ProgressEntry>) -> Void) {
         let now = Date()
-        let snapshot = try? WidgetSnapshotRepository().load()
+        let snapshot = snapshot()
         var entries = [ProgressEntry(date: now, progress: snapshot?.progress(at: now))]
         // Upcoming day entries reset recurring musts even without opening the app.
         if let snapshot {
@@ -59,30 +66,52 @@ struct ProgressWidgetView: View {
                     ring(progress)
                 case .accessoryRectangular:
                     VStack(alignment: .leading, spacing: 3) {
+                        #if os(watchOS)
+                        Label("マスト · Lv.\(progress.level)", systemImage: "bolt.fill").font(.caption)
+                        #else
                         Label("今日のマスト", systemImage: "bolt.fill").font(.caption)
+                        #endif
                         Text(progress.headline).font(.headline).minimumScaleFactor(0.65)
                         ProgressView(value: progress.progress)
                     }
+                #if os(watchOS)
+                case .accessoryCorner:
+                    Text(progress.mustComplete ? "✓" : progress.mustTotal == 0 ? "—" : "\(progress.mustRemaining)")
+                        .font(.title.bold())
+                        .widgetLabel { Text(progress.headline) }
+                #endif
                 default:
+                    #if os(watchOS)
+                    ring(progress)
+                    #else
                     home(progress)
+                    #endif
                 }
             } else {
-                if family == .accessoryInline {
+                if family == .accessoryCircular {
+                    Image(systemName: "arrow.clockwise").accessibilityLabel("ドパギキを開いて更新")
+                } else if family == .accessoryInline {
                     Label("ドパギキを開いて更新", systemImage: "arrow.clockwise")
                 } else {
                     VStack(alignment: .leading, spacing: 6) {
                         Image(systemName: "bolt.fill").widgetAccentable()
                         Text("アプリを開いて更新").font(.caption.bold())
+                        #if os(iOS)
                         if family == .systemSmall || family == .systemMedium {
                             Text("今日のマストをここに").font(.caption2)
                         }
+                        #endif
                     }
+                    #if os(iOS)
                     .foregroundStyle(family == .systemSmall || family == .systemMedium ? ink : .primary)
+                    #endif
                 }
             }
         }
         .privacySensitive()
+        #if os(iOS)
         .widgetURL(URL(string: "\(Bundle.main.object(forInfoDictionaryKey: "DopaURLScheme") as? String ?? "dopagaki")://today"))
+        #endif
         .containerBackground(for: .widget) {
             LinearGradient(colors: [Color(red: 0.07, green: 0.20, blue: 0.40), Color(red: 0.03, green: 0.05, blue: 0.12)], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
@@ -101,6 +130,7 @@ struct ProgressWidgetView: View {
         .accessibilityLabel(progress.headline)
     }
 
+    #if os(iOS)
     private func home(_ progress: WidgetDayProgress) -> some View {
         HStack(spacing: 18) {
             VStack(alignment: .leading, spacing: 8) {
@@ -140,6 +170,7 @@ struct ProgressWidgetView: View {
         .minimumScaleFactor(0.65)
         .accessibilityElement(children: .combine)
     }
+    #endif
 }
 
 @main
@@ -150,10 +181,15 @@ struct ProgressWidget: Widget {
         }
         .configurationDisplayName("今日のマスト")
         .description("あと何個で達成？ 今日のマストとレベルをひと目で。")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline, .accessoryCorner])
+        #else
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline])
+        #endif
     }
 }
 
+#if os(iOS)
 #Preview(as: .systemSmall) {
     ProgressWidget()
 } timeline: {
@@ -165,3 +201,10 @@ struct ProgressWidget: Widget {
 } timeline: {
     ProgressEntry.example(at: Date())
 }
+#else
+#Preview(as: .accessoryRectangular) {
+    ProgressWidget()
+} timeline: {
+    ProgressEntry.example(at: Date())
+}
+#endif

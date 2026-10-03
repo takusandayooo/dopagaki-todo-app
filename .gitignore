@@ -39,5 +39,6 @@ testflight-preparation.json
 state-v1.json
 screen-time-v1.json
 widget-progress-v1.json
+watch-progress-v1.json
 *.xcappdata/
 Photos/

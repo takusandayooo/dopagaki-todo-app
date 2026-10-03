@@ -9,6 +9,7 @@
   </p>
   <p>
     <img src="https://img.shields.io/badge/iOS-17%2B-000000?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="対象OS：iOS 17以降">
+    <img src="https://img.shields.io/badge/watchOS-10%2B-000000?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Apple Watch：watchOS 10以降">
     <img src="https://img.shields.io/badge/Xcode-26%2B-147EFB?style=for-the-badge&amp;logo=xcode&amp;logoColor=white" alt="開発環境：Xcode 26以降">
     <img src="https://img.shields.io/badge/Swift_Package-local-F05138?style=for-the-badge&amp;logo=swift&amp;logoColor=white" alt="ローカルSwift Package">
   </p>
@@ -74,7 +75,7 @@ YouTubeやTikTokで、「もう一本だけ」と次の動画を開く。やる�
 | 達成の可視化 | 立体の星、XP、レベルアップ、紙吹雪・花火 |
 | 記録・実績 | 活動カレンダー、連続記録、6種類のメダル、写真・テキスト・音声からのメモ |
 | リマインダー | マストやタスクの残り件数、期限・タイマー終了を通知 |
-| ウィジェット | ホーム画面・ロック画面で「マストあと何個」を確認。Macへの表示・通知はiPhoneとの連係に対応 |
+| ウィジェット | ホーム・ロック画面、Apple Watchの文字盤・スマートスタックで「マストあと何個」を確認。Macへの表示・通知はiPhoneとの連係に対応 |
 
 iOS 26以降では、主要な操作部分にLiquid Glassの透明感のあるデザインを取り入れています。
 
@@ -92,9 +93,12 @@ iOS 26以降では、主要な操作部分にLiquid Glassの透明感のある�
 | --- | --- |
 | ホーム画面 | 小サイズでマストの残り件数と進捗、中サイズでレベル・XP・全タスクの残り件数も確認 |
 | ロック画面 | 円形・長方形・1行表示でマストの残り件数を確認 |
+| Apple Watch | 文字盤で残り件数と達成率、スマートスタックの長方形表示でレベルも確認。タップでWatchの確認画面へ |
 | Mac | iPhoneとの連係でウィジェットを表示し、「マストあと○個」の通知を受け取る |
 
-追加方法はアプリの**「設定 → ウィジェット・Macで見る」**、または[ウィジェット・Macの使い方](docs/WIDGETS.md)へ。Mac単体でのタスク編集には対応していません。ホーム画面の表示・更新は確認済みで、ロック画面の実表示とMac連係は実機検証が残っています。
+**Apple Watchでも、手首を見るだけで今日のマストを思い出せます。** watchOS 10以降が対象です。iPhoneから件数・レベルだけを同期し、Watchの画面では次のレベルまでのXPも確認できます。タスクの完了と達成の演出はiPhoneで行います。
+
+追加方法はアプリの**「設定 → ウィジェット・Watch・Mac」**、または[ウィジェット・Watch・Macの使い方](docs/WIDGETS.md)へ。更新時刻はOSが調整します。ホーム画面の表示・更新は確認済みです。Watch版はビルドと同期データのテストまで確認しており、Watch実機での同期・文字盤表示、ロック画面の実表示、Mac連係は追加検証が必要です。
 
 ## 最初に試す操作
 
@@ -112,6 +116,7 @@ iOS 26以降では、主要な操作部分にLiquid Glassの透明感のある�
 ## 保存とプライバシー
 
 - タスク・集中時間・メモ・取り込んだ写真は端末内に保存します。ログイン・クラウド同期・独自の解析SDKはありません。
+- Apple Watch対応版では、ペアリング済みのWatchへ件数・達成数・レベル・XPを共有します。タスク名・メモ・写真は送りません。
 - 無料確認版から通常版へ記録は自動移行しません。
 - 音声入力は端末内認識を優先します。非対応の場合はAppleの音声認識サービスを使用します。録音ファイル自体は保存しません。
 - 音声・通知・Screen Timeを許可しなくても、手入力のToDoと集中記録は利用できます。

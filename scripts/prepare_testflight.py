@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare an independent five-target TestFlight project without signing or uploading."""
+"""Prepare an independent seven-target TestFlight project without signing or uploading."""
 import argparse
 from datetime import datetime, timezone
 import json
@@ -14,11 +14,19 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_NAME = "Dopagaki.xcodeproj"
-TARGET_NAMES = ("Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction", "ProgressWidget")
+TARGET_NAMES = ("Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction", "ProgressWidget", "DopagakiWatch", "WatchProgressWidget")
 COPY_PATHS = (
-    PROJECT_NAME, "App", "Core", "CoreTests", "Extensions", "Shared",
+    PROJECT_NAME, "App", "WatchApp", "Core", "CoreTests", "Extensions", "Shared",
     "PersistenceTests", "Verification", "scripts", "Distribution", "Package.swift", "README.md", "SPEC.md",
 )
+SCREEN_TIME_TARGETS = {"Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction"}
+
+
+def target_bundle(phone_bundle, name):
+    suffix = {"Dopagaki": "", "DopagakiWatch": ".watchkitapp", "WatchProgressWidget": ".watchkitapp.WatchProgressWidget"}.get(name, f".{name}")
+    return phone_bundle + suffix
+
+
 IGNORED_NAMES = {".DS_Store", ".git", ".build", ".swiftpm", "__pycache__", "xcuserdata", "DerivedData"}
 
 
@@ -99,9 +107,9 @@ def target_records(project):
     records = {objects[uid]["name"]: (uid, objects[uid]) for uid in root["targets"]}
     native_ids = {uid for uid, item in objects.items() if item.get("isa") == "PBXNativeTarget"}
     if set(records) != set(TARGET_NAMES) or len(root["targets"]) != len(TARGET_NAMES) or native_ids != set(root["targets"]):
-        raise PreparationError("Source must be the normal five-target app, not a Personal Team project.")
+        raise PreparationError("Source must be the normal seven-target app, not a Personal Team project.")
     for name, (_, target) in records.items():
-        expected_type = "com.apple.product-type.application" if name == "Dopagaki" else "com.apple.product-type.app-extension"
+        expected_type = "com.apple.product-type.application" if name in ["Dopagaki", "DopagakiWatch"] else "com.apple.product-type.app-extension"
         if target.get("productType") != expected_type:
             raise PreparationError(f"Unexpected product type for {name}.")
     return objects, root, records
@@ -165,8 +173,8 @@ def configure(project, directory, args):
             settings = config["buildSettings"]
             settings.update({
                 "CODE_SIGN_STYLE": "Automatic", "DEVELOPMENT_TEAM": args.team,
-                "PRODUCT_BUNDLE_IDENTIFIER": args.bundle_id if name == "Dopagaki" else f"{args.bundle_id}.{name}",
-                "DOPA_APP_GROUP": args.app_group, "CURRENT_PROJECT_VERSION": args.build_number,
+                "PRODUCT_BUNDLE_IDENTIFIER": target_bundle(args.bundle_id, name),
+                "DOPA_APP_GROUP": args.app_group, "DOPA_PHONE_BUNDLE_ID": args.bundle_id, "CURRENT_PROJECT_VERSION": args.build_number,
                 "VERSIONING_SYSTEM": "apple-generic", "GENERATE_INFOPLIST_FILE": "NO",
             })
             # An old manual profile/identity must not override the new automatic-signing team.
@@ -179,7 +187,7 @@ def configure(project, directory, args):
             info_path.write_bytes(plistlib.dumps(info, sort_keys=False))
             entitlement_path = local_path(directory, settings["CODE_SIGN_ENTITLEMENTS"])
             entitlements = plistlib.loads(entitlement_path.read_bytes())
-            if name != "ProgressWidget" and entitlements.get("com.apple.developer.family-controls") is not True:
+            if name in SCREEN_TIME_TARGETS and entitlements.get("com.apple.developer.family-controls") is not True:
                 raise PreparationError(f"{name} is missing its Family Controls entitlement.")
             entitlements["com.apple.security.application-groups"] = ["$(DOPA_APP_GROUP)"]
             entitlement_path.write_bytes(plistlib.dumps(entitlements, sort_keys=False))
@@ -203,13 +211,13 @@ def validate(project, directory, args):
     summaries = []
     for name in TARGET_NAMES:
         uid, target = records[name]
-        expected_bundle = args.bundle_id if name == "Dopagaki" else f"{args.bundle_id}.{name}"
+        expected_bundle = target_bundle(args.bundle_id, name)
         if root["attributes"]["TargetAttributes"][uid]["DevelopmentTeam"] != args.team:
             raise PreparationError(f"{name} has an inconsistent target team.")
         for config in configurations(objects, target):
             settings = config["buildSettings"]
             required = {"CODE_SIGN_STYLE": "Automatic", "DEVELOPMENT_TEAM": args.team, "PRODUCT_BUNDLE_IDENTIFIER": expected_bundle,
-                        "DOPA_APP_GROUP": args.app_group, "CURRENT_PROJECT_VERSION": args.build_number, "GENERATE_INFOPLIST_FILE": "NO"}
+                        "DOPA_APP_GROUP": args.app_group, "DOPA_PHONE_BUNDLE_ID": args.bundle_id, "CURRENT_PROJECT_VERSION": args.build_number, "GENERATE_INFOPLIST_FILE": "NO"}
             if any(settings.get(key) != value for key, value in required.items()):
                 raise PreparationError(f"{name}/{config['name']} has inconsistent distribution settings.")
             info = plistlib.loads(local_path(directory, settings["INFOPLIST_FILE"]).read_bytes())
@@ -217,17 +225,24 @@ def validate(project, directory, args):
                 raise PreparationError(f"{name}/{config['name']} has inconsistent Info.plist values.")
             entitlements = plistlib.loads(local_path(directory, settings["CODE_SIGN_ENTITLEMENTS"]).read_bytes())
             groups = [resolved(value, settings) for value in entitlements.get("com.apple.security.application-groups", [])]
-            if groups != [args.app_group] or bool(entitlements.get("com.apple.developer.family-controls")) != (name != "ProgressWidget"):
+            if groups != [args.app_group] or bool(entitlements.get("com.apple.developer.family-controls")) != (name in SCREEN_TIME_TARGETS):
                 raise PreparationError(f"{name}/{config['name']} has inconsistent Screen Time entitlements.")
         summaries.append({"name": name, "bundle_id": expected_bundle, "team": args.team, "app_group": args.app_group,
-                          "build_number": args.build_number, "configurations": ["Debug", "Release"], "family_controls": name != "ProgressWidget"})
-    app = records["Dopagaki"][1]
-    extensions = {records[name][0] for name in TARGET_NAMES[1:]}
-    dependencies = {objects[uid]["target"] for uid in app["dependencies"]}
-    embedded = {objects[objects[uid]["fileRef"]]["path"] for phase in app["buildPhases"]
-                if objects[phase]["isa"] == "PBXCopyFilesBuildPhase" for uid in objects[phase]["files"]}
-    if dependencies != extensions or embedded != {f"{name}.appex" for name in TARGET_NAMES[1:]}:
-        raise PreparationError("All Screen Time and widget extensions must remain dependencies and embedded products.")
+                          "build_number": args.build_number, "configurations": ["Debug", "Release"], "family_controls": name in SCREEN_TIME_TARGETS})
+    for parent, children in [("Dopagaki", TARGET_NAMES[1:5] + ("DopagakiWatch",)), ("DopagakiWatch", ("WatchProgressWidget",))]:
+        app = records[parent][1]
+        dependencies = {objects[uid]["target"] for uid in app["dependencies"]}
+        embedded = {objects[objects[uid]["fileRef"]]["path"] for phase in app["buildPhases"]
+                    if objects[phase]["isa"] == "PBXCopyFilesBuildPhase" for uid in objects[phase]["files"]}
+        products = {f"{name}.app" if name == "DopagakiWatch" else f"{name}.appex" for name in children}
+        if dependencies != {records[name][0] for name in children} or embedded != products:
+            raise PreparationError(f"{parent} must embed all its companion products.")
+    watch = records["DopagakiWatch"][1]
+    for config in configurations(objects, watch):
+        settings = config["buildSettings"]
+        info = plistlib.loads(local_path(directory, settings["INFOPLIST_FILE"]).read_bytes())
+        if settings["DOPA_PHONE_BUNDLE_ID"] != args.bundle_id or info["WKCompanionAppBundleIdentifier"] != "$(DOPA_PHONE_BUNDLE_ID)":
+            raise PreparationError("Watch companion must reference the configured iPhone app.")
     for item in objects.values():
         if item.get("isa") == "PBXFileReference" and item.get("sourceTree") == "SOURCE_ROOT":
             if not local_path(directory, item["path"]).exists():

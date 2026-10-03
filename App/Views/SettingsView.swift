@@ -54,7 +54,7 @@ struct SettingsView: View {
                     NavigationLink {
                         WidgetGuideView()
                     } label: {
-                        Label("ウィジェット・Macで見る", systemImage: "rectangle.3.group")
+                        Label("ウィジェット・Watch・Mac", systemImage: "rectangle.3.group")
                     }
                 }
                 #if DOPA_PERSONAL_TEAM
@@ -118,6 +118,11 @@ private struct WidgetGuideView: View {
                 Text("ロック画面を長押ししてカスタマイズし、ウィジェット欄から「ドパギキ」を選びます。円形・長方形・日付の上の表示に対応しています。")
                 Text("タスク名やメモは表示しません。件数を見せたくない場合は、iPhoneのロック中のウィジェット表示設定を変更できます。")
             }
+            Section("Apple Watch") {
+                Text("watchOS 10以降のWatchにドパギキをインストールすると、文字盤とスマートスタックに「今日のマスト」を追加できます。文字盤は長押しして編集、スマートスタックはDigital Crownを回して開き、長押しして追加します。")
+                Text("iPhoneで開いたドパギキから、残り件数・達成率・レベルを同期します。ウィジェットをタップするとWatchの確認画面が開きます。タスクの完了はiPhoneで行います。")
+                Text("表示されない場合は、iPhoneのWatchアプリでドパギキがインストールされているか確認してください。Watch対応版が必要です。")
+            }
             Section("Macのデスクトップ") {
                 Text("同じApple Accountを使うiPhoneのウィジェットをMacにも置けます。Macの「システム設定 → デスクトップとDock」でiPhoneウィジェットを有効にし、デスクトップを右クリックして追加します。")
                 Text("macOS Sonoma 14以降が必要です。iPhoneを近くに置くか、同じWi-Fiに接続してください。")
@@ -131,7 +136,7 @@ private struct WidgetGuideView: View {
                 Text("表示の更新や通知のタイミングはOSが調整します。最新の件数を確認したいときはアプリを開いてください。Macへの表示はiPhoneとの連係で、Mac単体でのタスク編集・データ同期には対応していません。")
             }
         }
-        .navigationTitle("ウィジェットとMac")
+        .navigationTitle("ウィジェット")
         .scrollContentBackground(.hidden)
         .dopaPage()
     }
@@ -150,6 +155,9 @@ private struct PrivacyExplanationView: View {
                 Section("タスク・記録・写真") {
                     Text("タスク、集中時間、メモ、選んで添付した写真、達成結果は、このiPhoneに保存します。アカウント登録や、アプリ独自のクラウド同期はありません。運営者のサーバーへこれらを送信する機能や、広告・外部のアクセス解析はありません。")
                     Text("写真は選んだものだけを取り込みます。写真アプリの元画像を削除しても、このアプリへ保存したコピーは残ります。")
+                }
+                Section("Apple Watchとの共有") {
+                    Text("ペアリング済みのWatchにドパギキがある場合、8日分の残り件数・達成数・レベル・XPと同期日時を送ります。タスク名・メモ・写真は送りません。Watch内の共有領域に保存し、文字盤とスマートスタックに表示します。")
                 }
                 Section("話して記録する") {
                     Text("音声入力を使うときに、マイクと音声認識の許可を求めます。端末が対応している場合は端末内で認識し、対応していない場合はAppleのサービスへ音声を送信することがあります。")

@@ -140,13 +140,30 @@ python3 scripts/prepare_personal_device.py \
 
 インストール後に一度アプリを開き、[ウィジェットの追加手順](WIDGETS.md)へ進んでください。
 
+## Apple Watch付きの無料確認版
+
+watchOS 10以降のWatchを、使用するiPhoneとペアリングしておきます。Watchを含む別プロジェクトを作成します（iPhoneウィジェットも含まれます）。
+
+```sh
+python3 scripts/prepare_personal_device.py \
+  --output /tmp/dopagaki-personal-watch-device \
+  --team YOUR_TEAM_ID --with-watch \
+  --app-group group.dev.dopagaki.todo.personal
+```
+
+生成先をXcodeで開き、まず`Dopagaki`スキームでペアリング先のiPhoneへ実行します。次に`DopagakiWatch`スキームと実機のWatchを選んで実行します。Watchの開発用署名にはWatchのデバイス登録とDeveloper Modeが必要です。MacにWatchが見えない場合はiPhoneの接続・Watchとのペアリングを確認し、Xcodeの端末管理画面の案内に従ってください。[Appleの実機実行ガイド](https://developer.apple.com/documentation/xcode/running-your-app-on-simulated-or-physical-devices)
+
+WatchアプリのBundle Identifierは`dev.dopagaki.todo.personal.watchkitapp`、そのウィジェットは末尾に`.WatchProgressWidget`が付きます。`DOPA_PHONE_BUNDLE_ID`はiPhone本体と一致する必要があります。Watch本体・Watchウィジェットにも同じApp Groupを設定します。
+
+今回のPersonal TeamではWatch本体・Watchウィジェットの開発用署名と、それらを同梱したiPhone版の上書きインストールまで成功しています。Watch実機へのインストール・同期・表示は未確認です。iPhoneだけの既存無料版はそのまま利用でき、`--with-widgets`はWatchを含めず、`--with-watch`はWatchも含めます。タスクの保存先は従来と同じです。インストール後は[文字盤・スマートスタックへの追加方法](WIDGETS.md#apple-watchの文字盤スマートスタック)へ進みます。
+
 ## Screen Timeを含む通常版
 
 無料Personal TeamではFamily Controlsを署名できません。Apple Developer Programの開発チームを使用します。
 
-1. `Dopagaki.xcodeproj` の5ターゲット（Dopagaki、ActivityMonitor、ShieldConfiguration、ShieldAction、ProgressWidget）に同じ開発チームを設定します。
-2. Bundle Identifierを自分のチームで使える値に設定します。各拡張は本体の識別子に拡張名を付けた形にします。
-3. 全5ターゲットで同一のApp Groupを有効にします。Family Controlsは本体とScreen Timeの3拡張に設定し、ProgressWidgetには追加しません。Build Settingsの `DOPA_APP_GROUP` も一致させます。
+1. `Dopagaki.xcodeproj` の7ターゲット（Dopagaki、ActivityMonitor、ShieldConfiguration、ShieldAction、ProgressWidget、DopagakiWatch、WatchProgressWidget）に同じ開発チームを設定します。
+2. Bundle Identifierを自分のチームで使える値に設定します。iPhoneの各拡張は本体の識別子に拡張名を付けた形にします。Watchは本体に`.watchkitapp`、Watchウィジェットはさらに`.WatchProgressWidget`を付けます。Watchの`DOPA_PHONE_BUNDLE_ID`もiPhone本体の識別子に合わせます。
+3. 全7ターゲットで同一のApp Groupを有効にします。Family Controlsは本体とScreen Timeの3拡張に設定し、iPhone・WatchのウィジェットとWatch本体には追加しません。Build Settingsの `DOPA_APP_GROUP` も一致させます。
 4. 実機を選びRunします。手元の署名設定はそのままGitにコミットせず、差分を確認してください。
 
 テストは「Screen Timeを許可 → 対象アプリを選択 → マスト未完了で制限 → 全完了で解除」の順に行います。15分の一時解除、翌日の再制限、OS側で許可を取り消した場合も確認します。時刻コールバックはOSの状態に依存し、厳密な定刻実行は保証しません。

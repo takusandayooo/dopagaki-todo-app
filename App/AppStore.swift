@@ -13,6 +13,7 @@ final class AppStore: ObservableObject {
     let screenTime: ScreenTimeService
     private let repository: StateRepository
     private let notifications = NotificationService()
+    private let watchSync = WatchSyncService.shared
     private var persistenceBlocked = false
     private var notificationTask: Task<Void, Never>?
 
@@ -203,6 +204,7 @@ final class AppStore: ObservableObject {
             try repository.save(draft)
             state = draft
             lastError = nil
+            watchSync.publish(WidgetProgressSnapshot(state: draft, at: Date()))
             #if !DOPA_PERSONAL_TEAM || DOPA_WIDGETS
             if (try? WidgetSnapshotRepository().save(WidgetProgressSnapshot(state: draft, at: Date()))) == true {
                 WidgetCenter.shared.reloadTimelines(ofKind: WidgetSnapshotRepository.kind)
