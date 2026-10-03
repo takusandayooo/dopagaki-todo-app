@@ -72,7 +72,7 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
                     for offset in 0..<dailyLimit {
                         let hour = min(23, max(0, state.settings.reminderHour) + offset)
                         guard let date = calendar.date(bySettingHour: hour, minute: (offset * 17) % 60, second: 0, of: day), date > now else { continue }
-                        dayRequests.append(request(id: "dopa.nudge.\(snapshot.dayKey(for: day)).\(offset)", title: "ドパギキ", body: progress.reminderText, date: date, taskID: next.taskID, sound: state.settings.soundEnabled, calendar: calendar))
+                        dayRequests.append(request(id: "dopa.nudge.\(snapshot.dayKey(for: day)).\(offset)", title: "ドパガキ", body: progress.reminderText, date: date, taskID: next.taskID, sound: state.settings.soundEnabled, calendar: calendar))
                     }
                 }
                 requests.append(contentsOf: dayRequests.prefix(dailyLimit))

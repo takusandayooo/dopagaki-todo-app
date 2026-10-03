@@ -89,9 +89,9 @@ struct ProgressWidgetView: View {
                 }
             } else {
                 if family == .accessoryCircular {
-                    Image(systemName: "arrow.clockwise").accessibilityLabel("ドパギキを開いて更新")
+                    Image(systemName: "arrow.clockwise").accessibilityLabel("ドパガキを開いて更新")
                 } else if family == .accessoryInline {
-                    Label("ドパギキを開いて更新", systemImage: "arrow.clockwise")
+                    Label("ドパガキを開いて更新", systemImage: "arrow.clockwise")
                 } else {
                     VStack(alignment: .leading, spacing: 6) {
                         Image(systemName: "bolt.fill").widgetAccentable()

@@ -89,7 +89,7 @@ def generate():
         if name in ["Dopagaki", "ActivityMonitor", "ShieldConfiguration", "ShieldAction"]:
             entitlements["com.apple.developer.family-controls"] = True
         plist(entitlements_path, entitlements)
-        info = {"CFBundleDevelopmentRegion": "ja", "CFBundleDisplayName": "ドパギキ" if is_app else name,
+        info = {"CFBundleDevelopmentRegion": "ja", "CFBundleDisplayName": "ドパガキ" if is_app else name,
                 "CFBundleExecutable": "$(EXECUTABLE_NAME)", "CFBundleIdentifier": "$(PRODUCT_BUNDLE_IDENTIFIER)",
                 "CFBundleInfoDictionaryVersion": "6.0", "CFBundleName": "$(PRODUCT_NAME)",
                 "CFBundlePackageType": "APPL" if is_app else "XPC!", "CFBundleShortVersionString": "1.0", "CFBundleVersion": "1", "DopaAppGroup": "$(DOPA_APP_GROUP)", "DopaURLScheme": "$(DOPA_URL_SCHEME)"}

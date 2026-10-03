@@ -13,7 +13,7 @@ struct SettingsView: View {
                     HStack(spacing: 15) {
                         Image(systemName: "star.fill").font(.system(size: 37)).foregroundStyle(DopaTheme.gold)
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("ドパギキ ToDo").font(.title2.bold())
+                            Text("ドパガキ ToDo").font(.title2.bold())
                             Text("始めやすく。達成は、思いきり。")
                                 .font(.caption).foregroundStyle(DopaTheme.secondary)
                         }
@@ -111,24 +111,24 @@ private struct WidgetGuideView: View {
             }
             #endif
             Section("ホーム画面") {
-                Text("ホーム画面の空いている場所を長押しし、編集からウィジェットを追加。「ドパギキ」の「今日のマスト」を選びます。")
+                Text("ホーム画面の空いている場所を長押しし、編集からウィジェットを追加。「ドパガキ」の「今日のマスト」を選びます。")
                 Text("小サイズはマストの残り件数、中サイズはレベルと全タスクの残り件数も表示します。タップすると「今日」を開きます。")
             }
             Section("ロック画面") {
-                Text("ロック画面を長押ししてカスタマイズし、ウィジェット欄から「ドパギキ」を選びます。円形・長方形・日付の上の表示に対応しています。")
+                Text("ロック画面を長押ししてカスタマイズし、ウィジェット欄から「ドパガキ」を選びます。円形・長方形・日付の上の表示に対応しています。")
                 Text("タスク名やメモは表示しません。件数を見せたくない場合は、iPhoneのロック中のウィジェット表示設定を変更できます。")
             }
             Section("Apple Watch") {
-                Text("watchOS 10以降のWatchにドパギキをインストールすると、文字盤とスマートスタックに「今日のマスト」を追加できます。文字盤は長押しして編集、スマートスタックはDigital Crownを回して開き、長押しして追加します。")
-                Text("iPhoneで開いたドパギキから、残り件数・達成率・レベルを同期します。ウィジェットをタップするとWatchの確認画面が開きます。タスクの完了はiPhoneで行います。")
-                Text("表示されない場合は、iPhoneのWatchアプリでドパギキがインストールされているか確認してください。Watch対応版が必要です。")
+                Text("watchOS 10以降のWatchにドパガキをインストールすると、文字盤とスマートスタックに「今日のマスト」を追加できます。文字盤は長押しして編集、スマートスタックはDigital Crownを回して開き、長押しして追加します。")
+                Text("iPhoneで開いたドパガキから、残り件数・達成率・レベルを同期します。ウィジェットをタップするとWatchの確認画面が開きます。タスクの完了はiPhoneで行います。")
+                Text("表示されない場合は、iPhoneのWatchアプリでドパガキがインストールされているか確認してください。Watch対応版が必要です。")
             }
             Section("Macのデスクトップ") {
                 Text("同じApple Accountを使うiPhoneのウィジェットをMacにも置けます。Macの「システム設定 → デスクトップとDock」でiPhoneウィジェットを有効にし、デスクトップを右クリックして追加します。")
                 Text("macOS Sonoma 14以降が必要です。iPhoneを近くに置くか、同じWi-Fiに接続してください。")
             }
             Section("Macで通知を受け取る") {
-                Text("Macの「iPhoneミラーリング」を設定して通知を許可し、「システム設定 → 通知 → iPhoneからの通知を許可」でドパギキを有効にします。")
+                Text("Macの「iPhoneミラーリング」を設定して通知を許可し、「システム設定 → 通知 → iPhoneからの通知を許可」でドパガキを有効にします。")
                 Text("iPhone側でも「やることを通知」をオンにしてください。通知には残り件数が表示されます。")
                 Link("対応機種・設定をAppleの案内で確認", destination: URL(string: "https://support.apple.com/ja-jp/120421")!)
             }
@@ -157,7 +157,7 @@ private struct PrivacyExplanationView: View {
                     Text("写真は選んだものだけを取り込みます。写真アプリの元画像を削除しても、このアプリへ保存したコピーは残ります。")
                 }
                 Section("Apple Watchとの共有") {
-                    Text("ペアリング済みのWatchにドパギキがある場合、8日分の残り件数・達成数・レベル・XPと同期日時を送ります。タスク名・メモ・写真は送りません。Watch内の共有領域に保存し、文字盤とスマートスタックに表示します。")
+                    Text("ペアリング済みのWatchにドパガキがある場合、8日分の残り件数・達成数・レベル・XPと同期日時を送ります。タスク名・メモ・写真は送りません。Watch内の共有領域に保存し、文字盤とスマートスタックに表示します。")
                 }
                 Section("話して記録する") {
                     Text("音声入力を使うときに、マイクと音声認識の許可を求めます。端末が対応している場合は端末内で認識し、対応していない場合はAppleのサービスへ音声を送信することがあります。")

@@ -8,7 +8,7 @@ import DopagakiCore
 final class WatchStore: NSObject, ObservableObject, WCSessionDelegate {
     static let shared = WatchStore()
     @Published private(set) var transfer: WatchProgressTransfer?
-    @Published private(set) var message = "iPhoneでドパギキを開いてください。"
+    @Published private(set) var message = "iPhoneでドパガキを開いてください。"
     @Published private(set) var requesting = false
     private let session = WCSession.default
     private var requestID: UUID?
@@ -29,7 +29,7 @@ final class WatchStore: NSObject, ObservableObject, WCSessionDelegate {
         // isReachable can be false while a current context is still available locally.
         receive(session.receivedApplicationContext)
         guard session.isReachable else {
-            message = "iPhoneでドパギキを開くと、次の接続時に更新します。"
+            message = "iPhoneでドパガキを開くと、次の接続時に更新します。"
             return
         }
         guard !requesting else { return }
@@ -39,7 +39,7 @@ final class WatchStore: NSObject, ObservableObject, WCSessionDelegate {
         message = "iPhoneに確認中…"
         session.sendMessage([WatchProgressTransfer.requestKey: true], replyHandler: { [weak self] reply in
             let received = self?.receive(reply) == true
-            Task { @MainActor in self?.finishRequest(id, message: !received ? "iPhoneで一度ドパギキを開いてください。" : "iPhoneの最新の集計を受け取りました。") }
+            Task { @MainActor in self?.finishRequest(id, message: !received ? "iPhoneで一度ドパガキを開いてください。" : "iPhoneの最新の集計を受け取りました。") }
         }, errorHandler: { [weak self] _ in
             Task { @MainActor in self?.finishRequest(id, message: "今は接続できません。iPhoneを近くに置いて再度お試しください。") }
         })

@@ -29,7 +29,7 @@ struct DopagakiWatchApp: App {
                             } else {
                                 Image(systemName: "iphone.and.arrow.forward").font(.largeTitle).foregroundStyle(.yellow)
                                 Text("iPhoneから更新しよう").font(.headline)
-                                Text("iPhoneでドパギキを開くと、今日の残り件数がここに届きます。").font(.caption)
+                                Text("iPhoneでドパガキを開くと、今日の残り件数がここに届きます。").font(.caption)
                             }
                             if let updated = store.transfer?.updatedAt {
                                 Text("最終同期 \(updated.formatted(date: .abbreviated, time: .shortened))")
@@ -47,7 +47,7 @@ struct DopagakiWatchApp: App {
                         .padding(.horizontal, 4)
                     }
                 }
-                .navigationTitle("ドパギキ")
+                .navigationTitle("ドパガキ")
                 .onChange(of: scenePhase) { _, phase in if phase == .active { store.refresh() } }
                 .task { store.refresh() }
             }
