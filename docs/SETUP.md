@@ -1,5 +1,20 @@
 # セットアップ
 
+アプリの特徴は[README](../README.md)、使用技術・テスト・コード構成は[開発ガイド](DEVELOPMENT.md)を参照してください。
+
+## 必要な環境
+
+| 項目 | 条件 |
+| --- | --- |
+| 開発環境 | Xcode 26以降を実行できるMac。検証環境はXcode 27 |
+| 対象OS | iOS 17以降。Liquid GlassはiOS 26以降 |
+| 補助スクリプト | Python 3（標準ライブラリのみ） |
+| シミュレーター | Apple開発チームの署名なしでビルド可能 |
+| 実機で音・触覚を確認 | Apple Account、開発者モードを有効にしたiPhone。無料Personal Team対応版あり |
+| Screen Timeの実機確認 | Apple Developer Programの開発チームとFamily Controls権限 |
+
+外部Swiftパッケージ、サーバー、APIキー、`.env`の設定は不要です。`DopagakiCore`は同じリポジトリ内のローカルSwift Packageです。
+
 ## どの方法で動かすか
 
 | 目的 | 方法 | Apple開発チーム |
@@ -19,15 +34,28 @@ python3 --version
 
 複数のXcodeがある場合は、Xcodeの「Settings → Locations → Command Line Tools」で使用するバージョンを選びます。
 
-## シミュレーター
+## リポジトリの取得とシミュレーター
 
-リポジトリのルートで次を実行します。
+リポジトリをクローンします。
 
 ```sh
+git clone https://github.com/takusandayooo/dopagaki-todo-app.git
+cd dopagaki-todo-app
 open Dopagaki.xcodeproj
 ```
 
-`Dopagaki` スキームとiPhoneシミュレーターを選択してRunします。触覚・Screen Timeの実際の制限は実機で確認してください。初回から `generate_project.py` を実行する必要はありません。
+Xcodeで **Dopagaki** スキームとiPhoneシミュレーターを選択し、Runを実行します。プロジェクトは同梱済みのため、初回の再生成は不要です。
+
+コマンドラインでのビルド確認：
+
+```sh
+xcodebuild -project Dopagaki.xcodeproj -scheme Dopagaki \
+  -destination 'generic/platform=iOS Simulator' \
+  -derivedDataPath /tmp/dopagaki-simulator-build \
+  CODE_SIGNING_ALLOWED=NO build
+```
+
+触覚・Screen Timeの実際の制限は実機で確認してください。
 
 ## 無料Personal TeamでiPhoneに入れる
 
