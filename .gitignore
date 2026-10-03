@@ -1,0 +1,42 @@
+# Build outputs and local tooling
+.build/
+.swiftpm/
+DerivedData/
+build/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.log
+*.xcresult/
+*.xcarchive/
+*.ipa
+*.dSYM/
+
+# Xcode's per-user settings
+*.xcuserstate
+xcuserdata/
+
+# Credentials and signing material
+.env
+.env.*
+!.env.example
+*.p8
+*.p12
+*.pfx
+*.pem
+*.key
+*.cer
+*.mobileprovision
+*.provisionprofile
+ExportOptions.plist
+
+# Local signing overrides / prepared distribution copies
+*.local.xcconfig
+*.local.json
+testflight-preparation.json
+
+# Runtime data and device exports
+state-v1.json
+screen-time-v1.json
+*.xcappdata/
+Photos/

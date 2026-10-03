@@ -1,0 +1,89 @@
+{
+  "verifiedDate": "2026-10-03",
+  "status": "local_preparation_verified_not_distributed",
+  "appleDeveloperProgram": "distribution_team_not_configured",
+  "toolchain": "Xcode 27.0\nBuild version 27A266a",
+  "checks": {
+    "swiftTests": {
+      "result": "passed",
+      "coreTests": 20,
+      "persistenceTests": 5,
+      "failures": 0
+    },
+    "projectSyntaxAndResources": {
+      "result": "passed",
+      "swiftSources": 26,
+      "nativeTargets": 4
+    },
+    "preparationSafety": {
+      "result": "passed",
+      "agentCases": 17,
+      "sourceSigningFilesUnchanged": true,
+      "nonemptyOutputRejected": true,
+      "invalidTeamRejected": true,
+      "distributionDocsCopied": true
+    },
+    "independentReleaseArchive": {
+      "result": "passed",
+      "configuration": "Release",
+      "destination": "generic/platform=iOS",
+      "codeSigningAllowed": false,
+      "archivePath": "/private/tmp/dopagaki-testflight-prepared-unsigned.xcarchive",
+      "logPath": "/private/tmp/dopagaki-testflight-prepared-archive.log",
+      "sampleTeamID": "ABCDE12345",
+      "sampleIdentifiersOnly": true,
+      "appBundleID": "jp.example.dopagaki",
+      "buildNumber": "44",
+      "version": "1.0",
+      "extensions": [
+        {
+          "name": "ActivityMonitor",
+          "bundleID": "jp.example.dopagaki.ActivityMonitor",
+          "buildNumber": "44"
+        },
+        {
+          "name": "ShieldAction",
+          "bundleID": "jp.example.dopagaki.ShieldAction",
+          "buildNumber": "44"
+        },
+        {
+          "name": "ShieldConfiguration",
+          "bundleID": "jp.example.dopagaki.ShieldConfiguration",
+          "buildNumber": "44"
+        }
+      ]
+    },
+    "archiveContents": {
+      "privacyManifest": true,
+      "systemBootTimeReason": "35F9.1",
+      "appIcon": "AppIcon",
+      "starSoundCount": 3,
+      "nonExemptEncryption": false
+    }
+  },
+  "privacyScreen": "設定 → このアプリについて → プライバシー。Release compile verified; interactive UI check not performed in this run.",
+  "signedForDistribution": false,
+  "appStoreConnectValidationPerformed": false,
+  "uploaded": false,
+  "invitationCreated": false,
+  "pending": [
+    "Apple Developer Program登録と本人のTeam ID",
+    "実際のBundle ID/App GroupとApp Store Connectアプリ登録",
+    "本体と3拡張のFamily Controls配布権限と配布署名",
+    "フィードバック/審査連絡先と公開プライバシーポリシー",
+    "署名済みArchiveのValidate/Upload、外部テスト審査、招待",
+    "Screen Time制限・解除と触覚等の実機確認"
+  ],
+  "limitations": [
+    "Unsigned sample archive verifies compilation and resources; it cannot be installed through TestFlight.",
+    "The archive uses sample identifiers, not the owner’s Apple account.",
+    "Existing SpeechRecorder requestRecordPermission deprecation warning remains."
+  ],
+  "sourceSHA256": {
+    "scripts/prepare_testflight.py": "36c7f94b1544d9eb1dc9625bc22dc32d65c9039fa8536c4dce40c2d0e674ceff",
+    "App/Views/SettingsView.swift": "0781c3369f2e5d9dbcb4664366f28991bf3f9f15698d8d5f26213765bbe471f1",
+    "App/PrivacyInfo.xcprivacy": "f1e250166d1df8609cd2fcb639b974efd26d926cc99794a89a2063cde1c8184e",
+    "App/Info.plist": "5cdfe4faaf3f7c6237a95c97bb860c4f2b1a82070d06b1f43167fa08cd346584",
+    "Dopagaki.xcodeproj/project.pbxproj": "9a166d31a3fc01970a34923cb6f0f2a53b7e05f12dda664ee4996b61ec084369"
+  }
+}

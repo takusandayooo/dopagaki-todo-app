@@ -1,0 +1,875 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99BA00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 99BA00000000000000000002 /* PrivacyInfo.xcprivacy */; };
+		278DA7AC7A14EC0912F1D108 = {isa = PBXBuildFile; fileRef = 36C63419A9B1F1622A9C6084; };
+		4144459E634F6F23363881DB = {isa = PBXBuildFile; fileRef = 3CBC6836E0B24069A9C6F62D; };
+		277904D1486666E934C11ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 280DEA2495D292472E376C64 /* Assets.xcassets */; };
+		1008C76B319AF9AFCBC03DEF /* App/DopagakiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9428BE10E12FFB8497455527 /* App/DopagakiApp.swift */; };
+		1A0C98ED52766F0A3A0D997C /* ShieldConfiguration.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28BD2EB851B8E90BE9DD5C84 /* Extensions/ActivityMonitor/ActivityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12A04AD58C2C04BADA75604 /* Extensions/ActivityMonitor/ActivityMonitor.swift */; };
+		33CC33B0AFADEF513B097F97 /* App/Views/Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158EAF049D367EEB8C6B865 /* App/Views/Components.swift */; };
+		3FDDB011897A95F43D79DCF7 /* App/Views/TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774B695EC6D4AF71666B2B4 /* App/Views/TaskDetailView.swift */; };
+		43863C7195C7F75BABFDD56D /* Shared/ScreenTimePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3DF1256D881DB17461EA77 /* Shared/ScreenTimePolicy.swift */; };
+		52D12D84A52A63B90D803B30 /* App/Views/ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692B64E3343F6656F170FE /* App/Views/ListsView.swift */; };
+		55487539CA84F57E121B9D18 /* ActivityMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5E49F1C4EE19C74F4C2A0D03 /* App/Views/ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02032626F0C0BD9F80985C /* App/Views/ActivityView.swift */; };
+		66D1F426C2490AB0F5A27C1D /* DopagakiCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0E12FF667A946147E2CA7BAD /* DopagakiCore */; };
+		7024C8C0F1EA16FE8F3F1EDC /* DopagakiCore in Frameworks */ = {isa = PBXBuildFile; productRef = DFBB54CF4BCEA864FCE65927 /* DopagakiCore */; };
+		8131EBAE163DF8BB58EA55FF /* App/AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC342ACE264CE19AEEE52F4A /* App/AppStore.swift */; };
+		903B4F04B693AD340263463B /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04B8EFFC251CF9994027D3E /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift */; };
+		A1BDF76D65101C4DA915DF27 /* App/Services/SpeechRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CC68F24CDA63EAB5470BA /* App/Services/SpeechRecorder.swift */; };
+		B1E7575D54CE95BB9AB2824C /* App/Views/TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A25F940E3A68EA9F4EAD7A9 /* App/Views/TaskEditorView.swift */; };
+		BD842A237294AC72EE08E2F7 /* App/Views/SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D0FF239548BE7306D22CE7 /* App/Views/SettingsView.swift */; };
+		BDCDF24FE9639EE2C990ADF8 /* App/Celebrations/CompletionPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A5A47C1CB5C2C5BCA1271 /* App/Celebrations/CompletionPresentation.swift */; };
+		C1558663B826767088C0FE63 /* Extensions/ShieldAction/ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E73F7C90D1030279555F26 /* Extensions/ShieldAction/ShieldActionExtension.swift */; };
+		C19A5821C910C8B9B74CFF19 /* Shared/Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63618BA3532DF14CD660A310 /* Shared/Persistence.swift */; };
+		C433E641A0FC431CA26F320B /* App/Services/ScreenTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80668772AC0D94BF20D79C52 /* App/Services/ScreenTimeService.swift */; };
+		C70256DE468D7584D79A257A /* App/Celebrations/CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83714364EA76A96962480887 /* App/Celebrations/CompletionView.swift */; };
+		CD8CD2DEB03858D1EE14E601 /* Shared/Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63618BA3532DF14CD660A310 /* Shared/Persistence.swift */; };
+		CE66A3C7FEC85C32B8018A31 /* Shared/ScreenTimePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3DF1256D881DB17461EA77 /* Shared/ScreenTimePolicy.swift */; };
+		D874255891C05DFE99ADBDFC /* App/Views/FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E1AF311FAC0BF6CDDEBA8 /* App/Views/FocusView.swift */; };
+		DF358C78FD60E6793521C7A0 /* App/Views/TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB92A0D3F525813F3386D08 /* App/Views/TodayView.swift */; };
+		E10B4CE8BE95D4BC81A39F60 /* App/Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558ABCEF8746DFBAD4518B9 /* App/Theme.swift */; };
+		E6F9E01AFEF8D26C52CE03D9 /* ShieldAction.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F37FD9787D2F45B5183BF8E2 /* ShieldAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EFABE1E089555F54889C0B64 /* App/Services/HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE32115A299DF0E7C10DAD /* App/Services/HapticsService.swift */; };
+		F292355DBD00988D8094C72C /* App/Services/NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFEF31D924ECB957578EA9 /* App/Services/NotificationService.swift */; };
+		FF64A8727111A72A14826ECD /* App/Celebrations/RewardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3282BF587E9EECBDF7E8A /* App/Celebrations/RewardScene.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D2A217ACF804CD8E5A8FE5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83EAD5A24C2F25EE0DE67DA8;
+			remoteInfo = ShieldAction;
+		};
+		48A964777CC30EEA01686FDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E9E18F7D8A4992AD837F39C;
+			remoteInfo = ActivityMonitor;
+		};
+		A2FD6E53AD245597E79CE757 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC03FBC5CB75AFF4847C7FA9;
+			remoteInfo = ShieldConfiguration;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		95D57C20A6150EBCC9A6FECA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				55487539CA84F57E121B9D18 /* ActivityMonitor.appex in Embed Foundation Extensions */,
+				1A0C98ED52766F0A3A0D997C /* ShieldConfiguration.appex in Embed Foundation Extensions */,
+				E6F9E01AFEF8D26C52CE03D9 /* ShieldAction.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		99BA00000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = App/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
+		36C63419A9B1F1622A9C6084 = {isa = PBXFileReference; lastKnownFileType = folder; path = App/Resources/RewardSounds; sourceTree = SOURCE_ROOT; };
+		3CBC6836E0B24069A9C6F62D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Services/StarImpactFeedback.swift; sourceTree = SOURCE_ROOT; };
+		280DEA2495D292472E376C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = App/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		009CC68F24CDA63EAB5470BA /* App/Services/SpeechRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Services/SpeechRecorder.swift; sourceTree = SOURCE_ROOT; };
+		0158EAF049D367EEB8C6B865 /* App/Views/Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/Components.swift; sourceTree = SOURCE_ROOT; };
+		0AFFEF31D924ECB957578EA9 /* App/Services/NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Services/NotificationService.swift; sourceTree = SOURCE_ROOT; };
+		0DA3282BF587E9EECBDF7E8A /* App/Celebrations/RewardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Celebrations/RewardScene.swift; sourceTree = SOURCE_ROOT; };
+		0E54B8596AD47370640FB855 /* SPEC.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SPEC.md; sourceTree = SOURCE_ROOT; };
+		22692B64E3343F6656F170FE /* App/Views/ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/ListsView.swift; sourceTree = SOURCE_ROOT; };
+		2822A3B0D33FFA46C29EAD04 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		2A25F940E3A68EA9F4EAD7A9 /* App/Views/TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/TaskEditorView.swift; sourceTree = SOURCE_ROOT; };
+		303A5A47C1CB5C2C5BCA1271 /* App/Celebrations/CompletionPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Celebrations/CompletionPresentation.swift; sourceTree = SOURCE_ROOT; };
+		360E1AF311FAC0BF6CDDEBA8 /* App/Views/FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/FocusView.swift; sourceTree = SOURCE_ROOT; };
+		5558ABCEF8746DFBAD4518B9 /* App/Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Theme.swift; sourceTree = SOURCE_ROOT; };
+		63618BA3532DF14CD660A310 /* Shared/Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Persistence.swift; sourceTree = SOURCE_ROOT; };
+		80668772AC0D94BF20D79C52 /* App/Services/ScreenTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Services/ScreenTimeService.swift; sourceTree = SOURCE_ROOT; };
+		83714364EA76A96962480887 /* App/Celebrations/CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Celebrations/CompletionView.swift; sourceTree = SOURCE_ROOT; };
+		8D3909FFF910DAF340D0CDD6 /* Dopagaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dopagaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F3DF1256D881DB17461EA77 /* Shared/ScreenTimePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/ScreenTimePolicy.swift; sourceTree = SOURCE_ROOT; };
+		9428BE10E12FFB8497455527 /* App/DopagakiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/DopagakiApp.swift; sourceTree = SOURCE_ROOT; };
+		97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ActivityMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		98DE32115A299DF0E7C10DAD /* App/Services/HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Services/HapticsService.swift; sourceTree = SOURCE_ROOT; };
+		BD02032626F0C0BD9F80985C /* App/Views/ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/ActivityView.swift; sourceTree = SOURCE_ROOT; };
+		CC342ACE264CE19AEEE52F4A /* App/AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/AppStore.swift; sourceTree = SOURCE_ROOT; };
+		D12A04AD58C2C04BADA75604 /* Extensions/ActivityMonitor/ActivityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions/ActivityMonitor/ActivityMonitor.swift; sourceTree = SOURCE_ROOT; };
+		DDB92A0D3F525813F3386D08 /* App/Views/TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/TodayView.swift; sourceTree = SOURCE_ROOT; };
+		E774B695EC6D4AF71666B2B4 /* App/Views/TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/TaskDetailView.swift; sourceTree = SOURCE_ROOT; };
+		E8D0FF239548BE7306D22CE7 /* App/Views/SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/Views/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShieldConfiguration.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F04B8EFFC251CF9994027D3E /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift; sourceTree = SOURCE_ROOT; };
+		F2E73F7C90D1030279555F26 /* Extensions/ShieldAction/ShieldActionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions/ShieldAction/ShieldActionExtension.swift; sourceTree = SOURCE_ROOT; };
+		F37FD9787D2F45B5183BF8E2 /* ShieldAction.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShieldAction.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12511F7CBBDBB86BA4D83CFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7024C8C0F1EA16FE8F3F1EDC /* DopagakiCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23FF7D0E304E1A7AB667C9A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D83BD9D177AAE3A89ABD8311 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D1F426C2490AB0F5A27C1D /* DopagakiCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE977C5DBA36494D203D02F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B28B7AF69320201D1CF206EB = {
+			isa = PBXGroup;
+			children = (
+				36C63419A9B1F1622A9C6084,
+				99BA00000000000000000002 /* PrivacyInfo.xcprivacy */,
+				3CBC6836E0B24069A9C6F62D,
+				280DEA2495D292472E376C64 /* Assets.xcassets */,
+				CC342ACE264CE19AEEE52F4A /* App/AppStore.swift */,
+				303A5A47C1CB5C2C5BCA1271 /* App/Celebrations/CompletionPresentation.swift */,
+				83714364EA76A96962480887 /* App/Celebrations/CompletionView.swift */,
+				0DA3282BF587E9EECBDF7E8A /* App/Celebrations/RewardScene.swift */,
+				9428BE10E12FFB8497455527 /* App/DopagakiApp.swift */,
+				98DE32115A299DF0E7C10DAD /* App/Services/HapticsService.swift */,
+				0AFFEF31D924ECB957578EA9 /* App/Services/NotificationService.swift */,
+				80668772AC0D94BF20D79C52 /* App/Services/ScreenTimeService.swift */,
+				009CC68F24CDA63EAB5470BA /* App/Services/SpeechRecorder.swift */,
+				5558ABCEF8746DFBAD4518B9 /* App/Theme.swift */,
+				BD02032626F0C0BD9F80985C /* App/Views/ActivityView.swift */,
+				0158EAF049D367EEB8C6B865 /* App/Views/Components.swift */,
+				360E1AF311FAC0BF6CDDEBA8 /* App/Views/FocusView.swift */,
+				22692B64E3343F6656F170FE /* App/Views/ListsView.swift */,
+				E8D0FF239548BE7306D22CE7 /* App/Views/SettingsView.swift */,
+				E774B695EC6D4AF71666B2B4 /* App/Views/TaskDetailView.swift */,
+				2A25F940E3A68EA9F4EAD7A9 /* App/Views/TaskEditorView.swift */,
+				DDB92A0D3F525813F3386D08 /* App/Views/TodayView.swift */,
+				D12A04AD58C2C04BADA75604 /* Extensions/ActivityMonitor/ActivityMonitor.swift */,
+				F2E73F7C90D1030279555F26 /* Extensions/ShieldAction/ShieldActionExtension.swift */,
+				F04B8EFFC251CF9994027D3E /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift */,
+				63618BA3532DF14CD660A310 /* Shared/Persistence.swift */,
+				8F3DF1256D881DB17461EA77 /* Shared/ScreenTimePolicy.swift */,
+				0E54B8596AD47370640FB855 /* SPEC.md */,
+				2822A3B0D33FFA46C29EAD04 /* README.md */,
+				FBDC4F23F93125BBEEAE800C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBDC4F23F93125BBEEAE800C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D3909FFF910DAF340D0CDD6 /* Dopagaki.app */,
+				97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */,
+				EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */,
+				F37FD9787D2F45B5183BF8E2 /* ShieldAction.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83EAD5A24C2F25EE0DE67DA8 /* ShieldAction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C90E74CDF57D77C288B3BE77 /* Build configuration list for PBXNativeTarget "ShieldAction" */;
+			buildPhases = (
+				B789BCF26EAE4A98714A31B4 /* Sources */,
+				23FF7D0E304E1A7AB667C9A1 /* Frameworks */,
+				C736151654AA5D3E6EEF5C9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShieldAction;
+			packageProductDependencies = (
+			);
+			productName = ShieldAction;
+			productReference = F37FD9787D2F45B5183BF8E2 /* ShieldAction.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		9E9E18F7D8A4992AD837F39C /* ActivityMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F653E743AEE4676E3C74EECF /* Build configuration list for PBXNativeTarget "ActivityMonitor" */;
+			buildPhases = (
+				2BF4C1C65A8A8B74AECC454F /* Sources */,
+				12511F7CBBDBB86BA4D83CFC /* Frameworks */,
+				67233130E0BFCD561086A0F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ActivityMonitor;
+			packageProductDependencies = (
+				DFBB54CF4BCEA864FCE65927 /* DopagakiCore */,
+			);
+			productName = ActivityMonitor;
+			productReference = 97483BF953ACBF8F8B00700B /* ActivityMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A10BE4E9182668B276660CE5 /* Dopagaki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE74B7482D866920EC1113E8 /* Build configuration list for PBXNativeTarget "Dopagaki" */;
+			buildPhases = (
+				97497B4035CBBE4034BDC990 /* Sources */,
+				D83BD9D177AAE3A89ABD8311 /* Frameworks */,
+				8417820DCDE4D6FF5443A2DE /* Resources */,
+				95D57C20A6150EBCC9A6FECA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D47B61022795632EDEB99BA /* PBXTargetDependency */,
+				0733B52D09279687F5B5ED2E /* PBXTargetDependency */,
+				3407C2CA9D35124037F9A59D /* PBXTargetDependency */,
+			);
+			name = Dopagaki;
+			packageProductDependencies = (
+				0E12FF667A946147E2CA7BAD /* DopagakiCore */,
+			);
+			productName = Dopagaki;
+			productReference = 8D3909FFF910DAF340D0CDD6 /* Dopagaki.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC03FBC5CB75AFF4847C7FA9 /* ShieldConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50A574C94586AD3692AB95E0 /* Build configuration list for PBXNativeTarget "ShieldConfiguration" */;
+			buildPhases = (
+				7F7C9AC1F2235ADBA507F04B /* Sources */,
+				DE977C5DBA36494D203D02F4 /* Frameworks */,
+				0424077D556B689D35FDB800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShieldConfiguration;
+			packageProductDependencies = (
+			);
+			productName = ShieldConfiguration;
+			productReference = EB383B0577DF9F2B59564C35 /* ShieldConfiguration.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					83EAD5A24C2F25EE0DE67DA8 = {
+						CreatedOnToolsVersion = 16.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.FamilyControls = {
+								enabled = 1;
+							};
+						};
+					};
+					9E9E18F7D8A4992AD837F39C = {
+						CreatedOnToolsVersion = 16.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.FamilyControls = {
+								enabled = 1;
+							};
+						};
+					};
+					A10BE4E9182668B276660CE5 = {
+						CreatedOnToolsVersion = 16.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.FamilyControls = {
+								enabled = 1;
+							};
+						};
+					};
+					AC03FBC5CB75AFF4847C7FA9 = {
+						CreatedOnToolsVersion = 16.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.FamilyControls = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 476936595835CA418D059BCB /* Build configuration list for PBXProject "Dopagaki" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				en,
+				Base,
+			);
+			mainGroup = B28B7AF69320201D1CF206EB;
+			packageReferences = (
+				A48D34F60E7715FD39EE57BC /* XCLocalSwiftPackageReference "." */,
+			);
+			productRefGroup = FBDC4F23F93125BBEEAE800C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10BE4E9182668B276660CE5 /* Dopagaki */,
+				9E9E18F7D8A4992AD837F39C /* ActivityMonitor */,
+				AC03FBC5CB75AFF4847C7FA9 /* ShieldConfiguration */,
+				83EAD5A24C2F25EE0DE67DA8 /* ShieldAction */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0424077D556B689D35FDB800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67233130E0BFCD561086A0F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8417820DCDE4D6FF5443A2DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99BA00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */,
+				278DA7AC7A14EC0912F1D108,
+				277904D1486666E934C11ACA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C736151654AA5D3E6EEF5C9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BF4C1C65A8A8B74AECC454F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BD2EB851B8E90BE9DD5C84 /* Extensions/ActivityMonitor/ActivityMonitor.swift in Sources */,
+				CD8CD2DEB03858D1EE14E601 /* Shared/Persistence.swift in Sources */,
+				43863C7195C7F75BABFDD56D /* Shared/ScreenTimePolicy.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F7C9AC1F2235ADBA507F04B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				903B4F04B693AD340263463B /* Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97497B4035CBBE4034BDC990 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4144459E634F6F23363881DB,
+				8131EBAE163DF8BB58EA55FF /* App/AppStore.swift in Sources */,
+				BDCDF24FE9639EE2C990ADF8 /* App/Celebrations/CompletionPresentation.swift in Sources */,
+				C70256DE468D7584D79A257A /* App/Celebrations/CompletionView.swift in Sources */,
+				FF64A8727111A72A14826ECD /* App/Celebrations/RewardScene.swift in Sources */,
+				1008C76B319AF9AFCBC03DEF /* App/DopagakiApp.swift in Sources */,
+				EFABE1E089555F54889C0B64 /* App/Services/HapticsService.swift in Sources */,
+				F292355DBD00988D8094C72C /* App/Services/NotificationService.swift in Sources */,
+				C433E641A0FC431CA26F320B /* App/Services/ScreenTimeService.swift in Sources */,
+				A1BDF76D65101C4DA915DF27 /* App/Services/SpeechRecorder.swift in Sources */,
+				E10B4CE8BE95D4BC81A39F60 /* App/Theme.swift in Sources */,
+				5E49F1C4EE19C74F4C2A0D03 /* App/Views/ActivityView.swift in Sources */,
+				33CC33B0AFADEF513B097F97 /* App/Views/Components.swift in Sources */,
+				D874255891C05DFE99ADBDFC /* App/Views/FocusView.swift in Sources */,
+				52D12D84A52A63B90D803B30 /* App/Views/ListsView.swift in Sources */,
+				BD842A237294AC72EE08E2F7 /* App/Views/SettingsView.swift in Sources */,
+				3FDDB011897A95F43D79DCF7 /* App/Views/TaskDetailView.swift in Sources */,
+				B1E7575D54CE95BB9AB2824C /* App/Views/TaskEditorView.swift in Sources */,
+				DF358C78FD60E6793521C7A0 /* App/Views/TodayView.swift in Sources */,
+				C19A5821C910C8B9B74CFF19 /* Shared/Persistence.swift in Sources */,
+				CE66A3C7FEC85C32B8018A31 /* Shared/ScreenTimePolicy.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B789BCF26EAE4A98714A31B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1558663B826767088C0FE63 /* Extensions/ShieldAction/ShieldActionExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0733B52D09279687F5B5ED2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC03FBC5CB75AFF4847C7FA9 /* ShieldConfiguration */;
+			targetProxy = A2FD6E53AD245597E79CE757 /* PBXContainerItemProxy */;
+		};
+		1D47B61022795632EDEB99BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E9E18F7D8A4992AD837F39C /* ActivityMonitor */;
+			targetProxy = 48A964777CC30EEA01686FDC /* PBXContainerItemProxy */;
+		};
+		3407C2CA9D35124037F9A59D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83EAD5A24C2F25EE0DE67DA8 /* ShieldAction */;
+			targetProxy = 3D2A217ACF804CD8E5A8FE5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D7743340F94431C8DFD6DF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Dopagaki.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2DB1BE299604A0D62D4756BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Dopagaki.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4EDF3CED6AA310DD347A4F69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ShieldConfiguration/ShieldConfiguration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ShieldConfiguration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ShieldConfiguration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		61834975E69621C6C35CABBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ActivityMonitor/ActivityMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ActivityMonitor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ActivityMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6BC8D46F71EBAB118D6C4453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ActivityMonitor/ActivityMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ActivityMonitor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ActivityMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		77D1E743BB2C965E82A97EB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ShieldAction/ShieldAction.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ShieldAction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ShieldAction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A0DD692E6C4DB95BE9FF9AE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A75075AA6C43C934D833339C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ShieldAction/ShieldAction.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ShieldAction/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ShieldAction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AF313FE36F307DCC50144FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B658874F47386093C669CF6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Extensions/ShieldConfiguration/ShieldConfiguration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DOPA_APP_GROUP = group.dev.dopagaki.todo;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ShieldConfiguration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.dopagaki.todo.ShieldConfiguration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		476936595835CA418D059BCB /* Build configuration list for PBXProject "Dopagaki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF313FE36F307DCC50144FD2 /* Debug */,
+				A0DD692E6C4DB95BE9FF9AE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50A574C94586AD3692AB95E0 /* Build configuration list for PBXNativeTarget "ShieldConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B658874F47386093C669CF6F /* Debug */,
+				4EDF3CED6AA310DD347A4F69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C90E74CDF57D77C288B3BE77 /* Build configuration list for PBXNativeTarget "ShieldAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A75075AA6C43C934D833339C /* Debug */,
+				77D1E743BB2C965E82A97EB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F653E743AEE4676E3C74EECF /* Build configuration list for PBXNativeTarget "ActivityMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BC8D46F71EBAB118D6C4453 /* Debug */,
+				61834975E69621C6C35CABBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE74B7482D866920EC1113E8 /* Build configuration list for PBXNativeTarget "Dopagaki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D7743340F94431C8DFD6DF7 /* Debug */,
+				2DB1BE299604A0D62D4756BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A48D34F60E7715FD39EE57BC /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E12FF667A946147E2CA7BAD /* DopagakiCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A48D34F60E7715FD39EE57BC /* XCLocalSwiftPackageReference "." */;
+			productName = DopagakiCore;
+		};
+		DFBB54CF4BCEA864FCE65927 /* DopagakiCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A48D34F60E7715FD39EE57BC /* XCLocalSwiftPackageReference "." */;
+			productName = DopagakiCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}

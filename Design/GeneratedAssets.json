@@ -1,0 +1,54 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "date": "2026-10-03",
+  "assets": [
+    {
+      "name": "AppIcon",
+      "prompt": "Create a polished iOS app icon for a joyful task-completion app. One single square 1024x1024 image, opaque full-bleed deep midnight navy (#09101F) background with a very subtle cobalt blue radial glow. Center a large bold five-point golden yellow star, with a simple thick dark navy checkmark cut into its center. The star has friendly slightly rounded tips, clean crisp silhouette, warm gold (#FFC539) face and one understated golden edge highlight. A small four-point gold sparkle near upper right and tiny blue sparkle near lower left, both secondary. Premium playful 2D vector-like graphic, restrained enamel-like finish, no photorealism, no perspective or 3D object, no letters, no words, no numbers, no extra objects, no phone mockup, no border, no pre-rounded square corners. Main star occupies about 70% of canvas, balanced centered composition, instantly recognizable at tiny icon size. Entire canvas background is opaque. Deliver only the final icon artwork.",
+      "transparent": false,
+      "project_path": "App/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
+    },
+    {
+      "name": "MedalFirstStep",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: FIRST TASK COMPLETED. Center symbol is one bold rounded golden checkmark. Ribbons are rich emerald green. Minimal clean rim, welcoming starter award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalFirstStep.imageset/MedalFirstStep.png"
+    },
+    {
+      "name": "MedalWeekStreak",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: SEVEN DAY STREAK. Center symbol is one bold golden flame silhouette with small amber interior flame. Ribbons are saturated vermilion orange. Minimal clean rim, energetic streak award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalWeekStreak.imageset/MedalWeekStreak.png"
+    },
+    {
+      "name": "MedalMonthStreak",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: THIRTY DAY STREAK. Center symbol is one bold golden trophy cup with two handles, small stem and broad base. Ribbons are rich royal purple. Minimal clean rim, prestigious consistency award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalMonthStreak.imageset/MedalMonthStreak.png"
+    },
+    {
+      "name": "MedalTenHours",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: TEN HOURS OF FOCUS. Center symbol is one bold golden stopwatch icon with a small top crown, circular dial and two very simple dark navy hands. No numbers or tiny ticks. Ribbons are saturated cyan blue. Minimal clean rim, focused time award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalTenHours.imageset/MedalTenHours.png"
+    },
+    {
+      "name": "MedalHundredHours",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: ONE HUNDRED HOURS OF FOCUS. Center symbol is one bold golden royal crown with three broad points, small sapphire blue central jewel and broad base. Ribbons are deep cobalt blue with fine gold edges. Minimal clean rim, the most prestigious mastery award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalHundredHours.imageset/MedalHundredHours.png"
+    },
+    {
+      "name": "MedalComeback",
+      "prompt": "Create ONE collectible achievement medal sprite for a joyful productivity app. Square 1024x1024 PNG with REAL TRANSPARENT BACKGROUND, isolated artwork, no backdrop or floor or cast shadow. Premium clean 2D vector-like enamel illustration, straight-on orthographic view, no perspective, no 3D scene. Consistent geometry: a round warm-gold medallion centered horizontally, diameter 680px, center approximately (512,420); smooth thick golden rim, fine bright inner border, dark midnight navy enamel interior. Two short split-tail ribbons emerge symmetrically behind lower half of medallion, ending near y=900. Entire artwork contained inside x=135..889 and y=80..930. Large simple centered gold symbol with excellent small-size legibility. Restrained upper-left edge highlights, crisp contours, rich saturated colors, uncluttered. No text, letters, numerals, border frame, watermark or additional badges. Achievement: RETURNING TO YOUR HABIT. Center symbol is one bold golden sprouting leaf on a gently curved short stem, a small simple dark vein, hopeful and friendly. Ribbons are fresh mint teal green. Minimal clean rim, a warm encouraging comeback award.",
+      "transparent": true,
+      "project_path": "App/Assets.xcassets/MedalComeback.imageset/MedalComeback.png"
+    },
+    {
+      "name": "RewardBackground",
+      "prompt": "Use case: stylized-concept. Asset type: portrait full-screen decorative background for a joyful iPhone task completion celebration. Create one finished opaque portrait wallpaper, aspect ratio 9:19.5, sophisticated abstract blue light atmosphere. Deep midnight navy base (#07142F), rich cobalt and royal blue flowing light veils around the upper outer edges, a gentle luminous curved arc sweeping across the upper third, very subtle cyan and violet accents. Soft atmospheric depth and smooth satin-like gradients, premium celebratory energy, clean and restrained. Composition: upper 10% dark and quiet for white header text; upper middle has a broad open dark blue central area where the app will overlay its own golden stars. Light mainly hugs the outer sides around this area. Bottom 45% fades smoothly to nearly solid deep midnight navy, quiet clear space for white text, yellow XP numbers and gold action button. Full bleed, no borders. No text, letters, numbers, UI, phone frame, stars, confetti, medals, icons, figures, avatars or recognizable objects. No white hotspots, no busy details, no grain. This is only the atmospheric background; the application draws all foreground content separately.",
+      "transparent": false,
+      "project_path": "App/Assets.xcassets/RewardBackground.imageset/RewardBackground.png"
+    }
+  ]
+}

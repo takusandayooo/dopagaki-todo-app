@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "documentStatus": "draft_not_uploaded",
+  "lastReviewedDate": "2026-10-03",
+  "locale": "ja",
+  "appName": "ドパギキ ToDo",
+  "minimumSupportedOS": "iOS 17.0",
+  "distributionBuild": {
+    "version": null,
+    "buildNumber": null,
+    "appleDeveloperTeamID": null,
+    "bundleID": null,
+    "appStoreConnectAppID": null,
+    "uploadedAt": null,
+    "testFlightInvitationURL": null,
+    "expiresAt": null
+  },
+  "betaAppDescription": "ドパギキ ToDoは、やること・習慣・集中時間を記録するiPhoneアプリです。タスクを終えると、大きな立体の星、触覚、XPで達成を振り返れます。\n\n毎日・曜日・毎月のタスク、今日のマスト、チェックリスト、ストップウォッチとタイマーに対応。音声からのメモ入力と写真、緑の活動カレンダー、連続記録、メダルで取り組みを残せます。希望する人はScreen Timeを許可して、マスト完了まで選んだアプリを制限できます。\n\nアプリ内のログインは不要です。記録は端末に保存し、クラウド同期はありません。音声入力、通知、アプリ制限を許可しなくても、手入力のToDoと集中記録を利用できます。ベータでは操作の分かりやすさ、保存の安定性、星の動きと触覚の感触を確認しています。",
+  "whatToTest": "・タスクの追加・編集、今日のマスト、チェックリスト、繰り返し。\n・ストップウォッチ／タイマーの開始、一時停止、再開、延長。「時間だけ保存して終了」と「タスクを完了」の使い分け。\n・大きな星、XP、レベル、メダル、マスト全達成の表示。設定の「振動を試す」で強さ・長さを確認し、音オン、スキップ、動きを減らす設定も試してください。\n・音声を文字にして編集・保存、写真の添付・表示。許可を拒否したときの手入力。\n・集中時間とタスク完了の活動カレンダーへの反映、日付選択での内訳、再起動後の保存と重複加算の防止。\n・Screen Timeを希望する場合のみ、許可・対象選択・有効化・マスト完了での解除・15分の一時解除。\n\n不具合はiPhoneの機種、iOS、ビルド番号、操作手順、期待した結果、実際の結果を添えて報告してください。触覚は強さ・長さ・星の着地とのタイミングを教えてください。スクリーンショットの個人情報は共有前に確認してください。",
+  "feedbackEmail": null,
+  "marketingURL": null,
+  "privacyPolicyURL": null,
+  "privacyPolicyDocument": "Distribution/Privacy.md",
+  "betaReviewContact": {
+    "firstName": null,
+    "lastName": null,
+    "email": null,
+    "phone": null
+  },
+  "signInInformation": {
+    "signInRequired": false,
+    "username": null,
+    "password": null
+  },
+  "reviewNotes": "アプリ内のログイン、アカウント作成、課金は不要です。初期データは空です。\n\n1. 「今日」の追加ボタンからタスクを作成し、マストをオンにして保存してください。\n2. 詳細でチェックリストを設定し、「このタスクを始める」からストップウォッチを開始、一時停止・再開し、「時間だけ保存して終了」を選択します。タスクは未完了のままで、時間だけを記録します。別の計測でタイマーと延長も確認できます。\n3. 詳細の「計測せずに完了」または集中画面の「タスクを完了」を選択します。期限なしは3つ星・100XP、累計250XPでレベルアップ、初回完了で「最初の一歩」メダルです。スキップでも報酬は同じです。\n4. 完了画面の「話して記録する」または詳細の記録欄へ進みます。「話して入力」でマイクと音声認識の許可を求めます。認識文字は編集して保存できます。許可を拒否しても手入力で保存できます。「写真を追加」から選んだ写真も記録できます。\n5. 「記録・実績」で草・日別内訳・メダルを確認し、再起動しても保存が残りXPが重複しないことを確認します。\n6. アプリ制限は任意です。「設定」→「マストとアプリ制限」でScreen Timeを許可し、対象アプリを選び、有効化します。未完了マストがある間に対象アプリの制限画面が表示され、全マスト完了で解除されます。15分の一時解除もあります。Screen Timeは配布用Family Controls権限を持つ実機で確認してください。\n7. Screen Time、マイク、音声認識、通知を拒否しても、手入力ToDoと集中記録を利用できます。マスト0件の日は制限しません。個人向けScreen Time許可は設定から取り消せます。",
+  "knownLimitations": [
+    "iPhone縦向け、iOS 17以降。iOS 26以降のLiquid Glassと大きな文字サイズはOS・端末別に確認対象です。",
+    "ログイン、クラウド同期、データ書き出し、独立したアプリ内バックアップはありません。無料実機確認版と通常配布版の記録は自動移行しません。",
+    "音声認識は許可・端末対応・通信状態に依存します。端末内認識が使えない場合はAppleの認識サービスを使用します。音声ファイルは保存しません。",
+    "音は初期オフでサイレントモードに従います。触覚の100%はAPI指定上限で、体感は端末や持ち方で変わります。実機での強さ・長さ・同期を調整中です。",
+    "ローカル通知は次の7日分をアプリ操作で更新します。長期間未起動の場合は予約を延長しません。OSの通知設定や集中モードによって表示が変わります。",
+    "Screen Timeには本人の許可と配布用権限が必要です。本人が許可を取り消せます。翌日の再制限や一時解除終了の切り替え時刻はOSに依存します。",
+    "期限内または期限なしは3つ星100XP、24時間以内の遅れは2つ星70XP、それ以降は1つ星50XP。過去の未完了の繰り返しは今日へ自動繰り越ししません。"
+  ],
+  "testFlightPlan": {
+    "suggestedInternalGroupName": "自分用テスト",
+    "suggestedExternalGroupName": "少人数ベータ",
+    "externalInvitationMethod": "email",
+    "externalTesterEmails": [],
+    "buildLifetimeDays": 90,
+    "invitationsSent": false,
+    "externalReviewSubmitted": false,
+    "membershipVerified": false,
+    "familyControlsDistributionVerified": false
+  },
+  "familyControlsTargetsToVerify": [
+    "Dopagaki",
+    "ActivityMonitor",
+    "ShieldConfiguration",
+    "ShieldAction"
+  ],
+  "requiredOwnerInput": [
+    "有効なApple Developer Programメンバーシップと開発チームID",
+    "配布用Bundle ID、App Group、App Store Connectアプリレコード",
+    "本体と3拡張機能のFamily Controls配布権限承認と署名設定",
+    "配布バージョン・ビルド番号",
+    "フィードバック用メール",
+    "審査連絡先の氏名・メール・電話",
+    "公開したプライバシーポリシーURL",
+    "配布ビルドに対応する輸出コンプライアンス回答"
+  ],
+  "usageNote": "App Store Connectへの転記用下書きです。APIリクエストではありません。nullは本人による未入力項目です。招待、公開リンク、アップロード、審査承認が完了したことを示しません。",
+  "officialReferences": {
+    "program": "https://developer.apple.com/programs/",
+    "testFlightOverview": "https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/",
+    "internalTesters": "https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers",
+    "externalTesters": "https://developer.apple.com/help/app-store-connect/test-a-beta-version/invite-external-testers/",
+    "testInformation": "https://developer.apple.com/help/app-store-connect/test-a-beta-version/provide-test-information/",
+    "familyControlsDistribution": "https://developer.apple.com/documentation/familycontrols/requesting-the-family-controls-entitlement"
+  }
+}
