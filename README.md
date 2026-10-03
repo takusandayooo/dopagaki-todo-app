@@ -2,7 +2,16 @@
   <img src="App/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="96" alt="ドパギキのアプリアイコン">
   <h1>ドパギキ ToDo</h1>
   <p><strong>小さな一歩を、気持ちいい達成に。</strong></p>
-  <p>SwiftUI · iOS 17+ · Core Haptics · Screen Time</p>
+  <p>
+    <img src="https://img.shields.io/badge/Swift-F05138?style=for-the-badge&amp;logo=swift&amp;logoColor=white" alt="言語：Swift">
+    <img src="https://img.shields.io/badge/SwiftUI-007AFF?style=for-the-badge&amp;logo=swift&amp;logoColor=white" alt="UI：SwiftUI">
+    <img src="https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="補助スクリプト：Python 3">
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/iOS-17%2B-000000?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="対象OS：iOS 17以降">
+    <img src="https://img.shields.io/badge/Xcode-26%2B-147EFB?style=for-the-badge&amp;logo=xcode&amp;logoColor=white" alt="開発環境：Xcode 26以降">
+    <img src="https://img.shields.io/badge/Swift_Package-local-F05138?style=for-the-badge&amp;logo=swift&amp;logoColor=white" alt="ローカルSwift Package">
+  </p>
 </div>
 
 タスク・習慣・集中時間を記録するiPhoneアプリです。タスクを終えると、星の着地、音と触覚、XP、紙吹雪で達成を祝います。日々の取り組みは活動カレンダーとメダルに残ります。
@@ -29,6 +38,22 @@
 
 画面はSwiftUI、星・メダルの演出はSceneKitで実装しています。iOS 26以降は主要な操作部分にLiquid Glassを使用します。旧OSやアクセシビリティ設定に応じた表示にも対応しています。
 
+## 使用技術
+
+| 種別 | 言語・技術 | 用途 |
+| --- | --- | --- |
+| アプリの言語 | Swift | 画面、タスク・集中時間・報酬のロジック、iOS拡張 |
+| UI | SwiftUI / Liquid Glass | タスク・タイマー・実績画面、iOS 26以降の操作部分 |
+| 立体演出 | SceneKit | 星とメダルの表示・アニメーション |
+| 触覚・音 | Core Haptics / AVFAudio | 23種類の触覚、星の着地音との同期 |
+| 音声・写真 | Speech / PhotosUI | 音声からのメモ入力、選択した写真の添付 |
+| 通知・アプリ制限 | UserNotifications / FamilyControls / ManagedSettings / DeviceActivity | ローカル通知、Screen Timeによる制限と解除 |
+| データ保存 | Codable / JSON / FileManager | 端末内のタスク・記録・写真の保存 |
+| パッケージ・テスト | Swift Package Manager / XCTest | ローカルの中核ロジックと25項目のテスト |
+| 開発用スクリプト | Python 3 | Xcodeプロジェクト・配布準備、構成検査、効果音の合成 |
+
+アプリ本体はSwiftで実装しています。Pythonは開発作業の補助に使い、iPhone上でPythonを実行する構成ではありません。
+
 ## 必要な環境
 
 | 項目 | 条件 |
@@ -44,7 +69,7 @@
 
 ## まず動かす
 
-アクセス権のあるGitHubアカウントでクローンします。
+リポジトリをクローンします。
 
 ```sh
 git clone https://github.com/takusandayooo/dopagaki-todo-app.git
@@ -121,8 +146,8 @@ Swiftファイルの追加・削除後に再生成する場合は `python3 scrip
 
 ## 配布状況と素材
 
-このリポジトリは非公開で管理します。GitHubへのソース保存と、TestFlight／App Storeへのアプリ配布は別です。[TestFlightの準備手順](Distribution/TestFlight.md)と[ベータメタデータ](Distribution/BetaMetadata.json)を用意していますが、署名付き配布・アップロード・招待発行は未実施です。
+ソースコードをGitHubで公開しています。TestFlight／App Storeへのアプリ配布は別です。[TestFlightの準備手順](Distribution/TestFlight.md)と[ベータメタデータ](Distribution/BetaMetadata.json)を用意していますが、署名付き配布・アップロード・招待発行は未実施です。
 
 アイコン・メダル・背景は画像生成素材で、[生成プロンプト](Design/GeneratedAssets.json)を記録しています。着地音は[同梱スクリプト](scripts/generate_star_sounds.py)で合成しています。外部の3Dモデルは使用していません。
 
-利用・再配布のライセンスは未設定です。一般公開や第三者への再配布を行う際は、ライセンスと素材の利用条件を別途確認してください。
+利用・再配布のライセンスは未設定です。コードや素材を第三者が利用・再配布する場合は、権利者への確認が必要です。
